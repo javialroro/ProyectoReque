@@ -2,7 +2,6 @@ h1{
     color: red;
     font-size: 20px;
     text-align: center;
-    
 }
 
 body{
@@ -18,7 +17,6 @@ body{
 img{
     width: 200px;
     height: 200px;
-
     display: block;
     margin: auto;
 }
