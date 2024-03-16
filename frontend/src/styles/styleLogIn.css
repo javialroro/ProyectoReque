@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+body {
+    background-color: #749691
+}
+
+h1 {
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+}
+
+label {
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+}
+
+.Name-Page {
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.titulologin {
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+.Square-Login {
+    height: 600px;
+    width: 40%;
+    /* Cambia el ancho según tus necesidades */
+    margin-left: 30%;
+    /* Ajusta el margen izquierdo para mantener centrado */
+
+    background-color: #1E3731;
+    border-radius: 50px;
+}
+
+.datosLogin {
+    width: 35%;
+    height: 70%;
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 100px;
+}
+
+
+.datosLogin>label {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+input {
+    width: 99%;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+button {
+    width: 100%;
+    font-size: 32px;
+    font-family: "Comfortaa", sans-serif;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-bottom: 100px;
+}
+
+.botonLogin {
+    background-color: #3E9994;
+    color: #FFFFFF;
+}
+
+.botonSignUp {
+    background-color: #D9D9D9;
+    color: #000000;
+}
