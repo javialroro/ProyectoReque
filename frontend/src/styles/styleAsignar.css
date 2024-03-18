@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+body {
+    background-color: #749691;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+div {
+    background-color: #1E3731;
+    height: 150px;
+    width: 40%;
+    margin-left: 30%;
+    margin-bottom: 3%;
+    border-radius: 50px;
+}
+
+label {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+select{
+    position: absolute;
+    margin-left: 40px;
+    margin-top:80px;
+    width: 35%;
+    height: 40px;
+    border-radius: 20px;
+}
+
+button {
+    background-color: #185A4A;
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.btnAsignarColaborador{
+    justify-content: center;
+    margin-left: 30%;
+    height: 60px;
+    width: 40%;
+}
+
+.btnRegresar {
+    background-color: #031E17;
+    justify-content: center;
+    margin-left: 30%;
+    height: 60px;
+    width: 40%;
+}
+
