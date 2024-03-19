@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Snupie - Modificar Colaborador</title>
+        <link rel="stylesheet" href="../src/styles/styleModColab.css"/>
+    </head>
+    <body>
+        <h1 class="Name-Page">Snupie</h1>
+        <div class="container">
+            <div class="box" id="selecColab">
+                <label for="selectColab">Seleccione el colaborador:</label>
+                <select id="selectColab" name="escogerColaborador">
+                    <option value="opcion1">Opcion 1</option>
+                    <option value="opcion2">Opcion 2</option>
+                    <option value="opcion3">Opcion 3</option>
+                </select>
+            </div>
+            <div class="box" id="nuevosDatos">
+                <h1>Nuevos Datos</h1>
+                <label for="campoEmail">Email:</label>
+                <input type="email" id="campoEmail" name="email">
+                <label for="campoDepartamento">Departamento al que pertenece:</label>
+                <input type="text" id="campoDepartamento" name="departamento">
+                <label for="campoTelefono">Telefono:</label>
+                <input type="text" id="campoTelefono" name="telefono">
+                <label for="selectEstado">Estado:</label>
+                <select id="selectEstado" name="escogerEstado">
+                    <option value="opcion1">Disponible</option>
+                    <option value="opcion2">Trabajando en un proyecto</option>
+                </select>
+                <button class="btnActualizar">Actualizar</button>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+body {
+    background-color: #749691;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    text-align:center;
+    font-weight: bold;
+}
+
+.Name-Page{
+    font-size: 60px;
+}
+
+.container {
+    display: flex;
+}
+
+.box {
+    flex: 1;
+    padding: 10px;
+    margin: 10px 150px 150px;
+    background-color: #1E3731;
+    border-radius: 25px;
+    display: block;
+}
+
+#selecColab {
+    margin-top: 15%;
+    height: 100px;
+}
+
+
+label {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 10px;
+    display: block;
+}
+
+input {
+    width: 90%;
+    margin-top: 50px;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: none;
+}
+
+select {
+    width: 90%;
+    margin-top: 50px;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    font-size:24px;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    background-color: #3E9994;
+    color: #FFFFFF;
+    width: 90%;
+    font-size: 32px;
+    font-family: "Comfortaa", sans-serif;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+
