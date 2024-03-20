@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+body {
+    background-color: #749691;
+}
+
+.Name-Page {
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    text-shadow: 0px 4px 14.9px rgba(0,0,0,0.5);
+}
+
+.container {
+    background-color: #1E3731;
+    width: 60%;
+    height: 800px;
+    margin: 1% 20%;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.divDerecho {
+    float:right;
+    width: 50%;
+}
+
+.divIzquierdo {
+    float: left;
+    width: 50%;
+}
+
+label{
+    display: inline-block;
+    width: 100%;
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+input {
+    display: inline-block;
+    width: 90%;
+    height: 20px;
+    font-size: 16px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+textarea {
+    width: 91%;
+    height: 200px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    resize: none;
+    border-radius: 8px;
+}
+
+select {
+    display: inline-block;
+    width: 91%;
+    height: 20px;
+    font-size: 16px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+
+button {
+    background-color: #3E9994;
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor:pointer;
+    width: 10%;
+}
+
+#colaborador {
+    width: 80%;
+}
+
+ul {
+    background-color: #FFFFFF;
+    margin-left: 20px;
+    padding: 5px 30px;
+    width: 80%;
+    height: 200px;
+    border-radius: 16px;
+    overflow: auto;
+}
+
+ul::-webkit-scrollbar {
+    width: 10px;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background-color: #3E9994;
+    border-radius: 5px;
+}
+
+/* Estilo de la pista dentro de un div */
+ul::-webkit-scrollbar-track {
+    background-color: #1E3731;
+    border-radius: 8px;
+}
+
+#descripcion{
+    height: 90px;
+    margin-bottom: 0px;
+}
+
+#tarea {
+    width: 60%;
+    margin-bottom: 0px;
+}
+
+#storyPointTarea {
+    width: 16%;
+    margin-left:0px;
+    margin-bottom: 0px;
+}
+
+
