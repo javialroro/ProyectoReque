@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: snupie_bd
+      DB_USER: myuser
+      DB_PASSWORD: myuserpassword
+    ports:
+      - 3000:3000
+    networks:
+      - web
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysecretpassword
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: myuserpassword
+    networks:
+      - web
+    volumes:
+      - ./database/:/docker-entrypoint-initdb.d/
+    ports:
+      - "3307:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+    networks:
+      - web
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+networks:
+  web:
+    driver: bridge
