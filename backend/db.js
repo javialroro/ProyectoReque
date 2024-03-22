@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 class Database {
     constructor(database, user, password, host, port) {
@@ -18,13 +18,11 @@ class Database {
     }
 
     connect() {
-        this.connection.connect((err) => {
-            if (err) {
-                console.error('Failed to connect to database:', err);
-                return;
-            }
-            console.log('Connected to MySQL database');
-        });
+        try {
+            this.connection.connect();
+        } catch (error) {
+            console.error('Failed to connect to database:', error);
+        }
     }
 
     disconnect() {
@@ -34,6 +32,18 @@ class Database {
                 return;
             }
             console.log('Disconnected from MySQL database');
+        });
+    }
+
+    async query(sql, values) {
+        return new Promise((resolve, reject) => {
+            this.connection.query(sql, values, (error, results, fields) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+            });
         });
     }
 

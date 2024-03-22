@@ -5,10 +5,10 @@ services:
     build: .
     environment:
       DB_HOST: db
-      DB_PORT: 5432
+      DB_PORT: 3306
       DB_NAME: snupie_bd
       DB_USER: myuser
-      DB_PASSWORD: myuserpassword
+      DB_PASSWORD: secret
     ports:
       - 3000:3000
     networks:
@@ -20,17 +20,17 @@ services:
     command: npm start
 
   db:
-    image: mysql
+    image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: mysecretpassword
+      MYSQL_ROOT_PASSWORD: secret
       MYSQL_USER: myuser
-      MYSQL_PASSWORD: myuserpassword
+      MYSQL_PASSWORD: secret
     networks:
       - web
     volumes:
       - ./database/:/docker-entrypoint-initdb.d/
     ports:
-      - "3307:3306"
+      - "3306:3306"  # Corregido el mapeo de puertos
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

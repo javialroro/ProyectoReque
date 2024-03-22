@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
 
 
 app.get('/api/users', async (req, res) => {
-    const tasks = await appService.getUsers();
-    res.send(tasks);
+    const users = await appService.getUsers();
+    res.json(users);
 });
 
 const PORT = process.env.PORT || 3000;

@@ -4,8 +4,13 @@ class AppService {
     }
 
     async getUsers() {
-        const users = await this.database.query('SELECT * FROM usuario');
-        return users;
+        try {
+            const query = 'SELECT * FROM usuario';
+            const users = await this.database.query(query);
+            return users;
+        } catch (error) {
+            console.error('Failed to get users:', error);
+        }
     }
 }
 
