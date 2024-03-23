@@ -30,7 +30,7 @@ services:
     volumes:
       - ./database/:/docker-entrypoint-initdb.d/
     ports:
-      - "3306:3306"  # Corregido el mapeo de puertos
+      - "3307:3306"  # Corregido el mapeo de puertos
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
