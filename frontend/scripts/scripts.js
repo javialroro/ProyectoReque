@@ -39,3 +39,6 @@ function agregarTarea() {
     var inputTarea = document.getElementById('tarea').value = '';
     var inputStoryPoints = document.getElementById('storyPointTarea').value = '';
 }
+
+//==================Pantalla Consultar Proyecto==========================
+
