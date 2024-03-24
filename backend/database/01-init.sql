@@ -26,7 +26,6 @@ CREATE TABLE  Tareas (
     idUsuario INT
 );
 
-
 CREATE TABLE HistorialProyecto(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     hora DATETIME,

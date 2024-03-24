@@ -1,4 +1,5 @@
 -- Obtener todos los usuarios y su información 
+USE snupie_bd;
 
 DELIMITER //
 
