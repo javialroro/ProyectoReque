@@ -27,8 +27,6 @@ CREATE TABLE Tareas (
     fecha_finalizacion DATE
 );
 
-
-
 CREATE TABLE HistorialProyecto(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     hora DATETIME,

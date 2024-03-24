@@ -26,6 +26,16 @@ app.get('/api/users', async (req, res) => {
     res.json(users);
 });
 
+app.get('/api/projects', async (req, res) => {
+    const projects = await appService.getProjects();
+    res.json(projects);
+});
+
+app.get('/api/getTaskState', async (req, res) => {
+    const taskState = await appService.getTaskState();
+    res.json(taskState);
+});
+
 const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
