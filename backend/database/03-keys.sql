@@ -1,13 +1,14 @@
 USE snupie_bd;
--- Agregar las claves foráneas necesarias
-ALTER TABLE Foro ADD CONSTRAINT fk_foro_proyecto FOREIGN KEY (proyecto) REFERENCES proyectos(id);
-ALTER TABLE Foro_Mensajes ADD CONSTRAINT fk_foro_mensaje FOREIGN KEY (id_foro) REFERENCES Foro(id);
-ALTER TABLE colaboradores_reuniones ADD CONSTRAINT fk_colaborador_reunion FOREIGN KEY (id_reunion) REFERENCES reuniones(id);
-ALTER TABLE colaboradores_reuniones ADD CONSTRAINT fk_colaborador_usuario FOREIGN KEY (id_colaborador) REFERENCES usuario(id);
-ALTER TABLE proyectos ADD CONSTRAINT fk_proyecto_estado FOREIGN KEY (estado) REFERENCES estados(id);
-ALTER TABLE proyectos ADD CONSTRAINT fk_proyecto_responsable FOREIGN KEY (responsable) REFERENCES usuario(id);
-ALTER TABLE reuniones ADD CONSTRAINT fk_reunion_proyecto FOREIGN KEY (proyecto) REFERENCES proyectos(id);
-ALTER TABLE tareas ADD CONSTRAINT fk_tarea_proyecto FOREIGN KEY (id_proyecto) REFERENCES proyectos(id);
-ALTER TABLE tareas ADD CONSTRAINT fk_tarea_estado FOREIGN KEY (estado) REFERENCES estados(id);
-ALTER TABLE usuario ADD CONSTRAINT fk_usuario_rol FOREIGN KEY (rol) REFERENCES rol(id);
-ALTER TABLE usuario ADD CONSTRAINT fk_usuario_proyecto FOREIGN KEY (proyecto) REFERENCES proyectos(id);
+
+ALTER TABLE HistorialProyecto ADD CONSTRAINT fk_historial_proyecto FOREIGN KEY (idProyecto) REFERENCES Proyectos(idProyecto);
+ALTER TABLE Tareas ADD CONSTRAINT fk_tareas_proyecto FOREIGN KEY (idProyecto) REFERENCES Proyectos(idProyecto);
+ALTER TABLE Tareas ADD CONSTRAINT fk_estado_tarea FOREIGN KEY (idEstado) REFERENCES EstadoTarea(idEstado);
+ALTER TABLE Foro ADD CONSTRAINT fk_foro_proyecto FOREIGN KEY (idProyecto) REFERENCES Proyectos(idProyecto);
+ALTER TABLE ForoComentarios ADD CONSTRAINT fk_foro_comentarios FOREIGN KEY (idForo) REFERENCES Foro(idForo);
+ALTER TABLE Usuario ADD CONSTRAINT fk_usuario_proyecto FOREIGN KEY (idProyecto) REFERENCES Proyectos(idProyecto);
+ALTER TABLE Reuniones ADD CONSTRAINT fk_reuniones_proyecto FOREIGN KEY (IdProyecto) REFERENCES Proyectos(idProyecto);
+AlTER TABLE ColaboradoresReuniones ADD CONSTRAINT fk_colaboradores_reuniones FOREIGN KEY (idReunion) REFERENCES Reuniones(idReunion);
+ALTER TABLE Proyectos ADD CONSTRAINT fk_proyecto_estado FOREIGN KEY (Estado) REFERENCES EstadoProyecto(idEstado);
+AlTER TABLE Usuario ADD CONSTRAINT fk_usuario_rol FOREIGN KEY (idRol) REFERENCES Rol(idRol);
+ALTER TABLE Usuario ADD CONSTRAINT fk_usuario_estado FOREIGN KEY (idEstado) REFERENCES EstadoUsuario(idEstado);
+ALTER TABLE Tareas ADD CONSTRAINT fk_tareas_usuario FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario);  

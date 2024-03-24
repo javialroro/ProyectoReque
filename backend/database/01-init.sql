@@ -1,78 +1,98 @@
 GRANT ALL PRIVILEGES ON snupie_bd.* TO 'myuser'@'%';
 FLUSH PRIVILEGES;
--- Crear la base de datos
+
 CREATE DATABASE snupie_bd;
 
--- Usar la base de datos creada
 USE snupie_bd;
 
--- Crear la tabla "Foro"
-CREATE TABLE  Foro (
+CREATE TABLE Proyectos (
+    idProyecto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Nombre NVARCHAR(255),
+    recursos_necesarios NVARCHAR(255),
+    Presupuesto DOUBLE PRECISION,
+    Responsable INT, 
+    descripcion NVARCHAR(255),
+    fecha_inicio DATE,
+    Estado INT
+
+);
+
+CREATE TABLE  Tareas (
+    idTarea INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    idProyecto INT,
+    nombre NVARCHAR(255),
+    descripcion NVARCHAR(255),
+    idEstado INT,
+    idUsuario INT
+);
+
+
+CREATE TABLE HistorialProyecto(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    proyecto INT,
-    tema VARCHAR(255)
+    hora DATETIME,
+    descripcion NVARCHAR(255),
+    idProyecto INT
+    
 );
 
--- Crear la tabla "Foro_Mensajes"
-CREATE TABLE  Foro_Mensajes (
-    id_foro INT,
-    mensaje VARCHAR(255)
+CREATE TABLE Foro(
+    idForo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    idProyecto INT,
+    tema NVARCHAR(255),
+    idUsuario INT,
+    descripcion NVARCHAR(255)
 );
 
--- Crear la tabla "colaboradores_reuniones"
-CREATE TABLE  colaboradores_reuniones (
-    id_reunion INT,
-    id_colaborador INT
+CREATE TABLE ForoComentarios(
+    idComentario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    idForo INT,
+    idUsuario INT,
+    mensaje NVARCHAR(255),
+    fecha DATETIME
 );
 
--- Crear la tabla "estados"
-CREATE TABLE  estados (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255)
+CREATE TABLE Rol(
+    idRol INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre NVARCHAR(255)
+);
+    
+CREATE TABLE EstadoProyecto(
+    idEstado INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre NVARCHAR(255)
 );
 
--- Crear la tabla "proyectos"
-CREATE TABLE  proyectos (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255),
-    campo VARCHAR(255),
-    presupuesto INT,
-    tareas INT,
-    recursos_necesarios VARCHAR(255),
-    estado INT,
-    responsable INT,
-    fecha_inicio DATE
+CREATE TABLE EstadoTarea(
+    idEstado INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre NVARCHAR(255)
 );
 
--- Crear la tabla "reuniones"
-CREATE TABLE  reuniones (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    proyecto INT,
-    fecha DATE,
-    tema VARCHAR(255),
-    medio VARCHAR(255)
+CREATE TABLE EstadoUsuario(
+    idEstado INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre NVARCHAR(255)
 );
 
--- Crear la tabla "rol"
-CREATE TABLE  rol (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255)
+CREATE TABLE  Usuario (
+    idUsuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    idProyecto INT,
+    nombre NVARCHAR(255),
+    cedula NVARCHAR(255),
+    correoElectronico NVARCHAR(255),
+    departamento NVARCHAR(255),
+    contrasena NVARCHAR(255),
+    idRol INT,
+    IdEstado INT
 );
 
--- Crear la tabla "tareas"
-CREATE TABLE tareas (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    id_proyecto INT,
-    nombre VARCHAR(255),
-    estado INT
+CREATE TABLE Reuniones (
+    idReunion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    IdProyecto INT,
+    tema NVARCHAR(255),
+    fecha DATETIME,
+    medio NVARCHAR(255)
 );
 
--- Crear la tabla "usuario"
-CREATE TABLE usuario (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    correo VARCHAR(255),
-    contrasena VARCHAR(255),
-    rol INT,
-    proyecto INT
+CREATE TABLE ColaboradoresReuniones(
+    idReunion INT,
+    idColaborador INT
 );
 
