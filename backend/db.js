@@ -1,20 +1,17 @@
 const mysql = require('mysql2');
 
 class Database {
-    constructor(database, user, password, host, port) {
+    constructor(database, user, password, instanceConnectionName) {
         this.database = database;
         this.user = user;
         this.password = password;
-        this.host = host;
-        this.port = port;
-        this.connection = mysql.createConnection({
-            host: this.host,
+        this.instanceConnection = instanceConnectionName;
+        this.connection = mysql.createPool({
             user: this.user,
             password: this.password,
             database: this.database,
-            port: this.port
+            socketPath: `/cloudsql/${this.instanceConnection}`,
         });
-        this.connect();
     }
 
     connect() {
