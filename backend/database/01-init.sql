@@ -17,14 +17,16 @@ CREATE TABLE Proyectos (
 
 );
 
-CREATE TABLE  Tareas (
+CREATE TABLE Tareas (
     idTarea INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     idProyecto INT,
     nombre NVARCHAR(255),
     descripcion NVARCHAR(255),
     idEstado INT,
-    idUsuario INT
+    idUsuario INT,
+    fecha_finalizacion DATE
 );
+
 
 
 CREATE TABLE HistorialProyecto(
