@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Lateral</title>
+    <link rel="stylesheet" href="../src/styles/styleForo.css">
+</head>
+
+<body>
+    <div class="menu">
+        <h1>Snupie</h1>
+        <h2>Foros públicos:</h2>
+        <div class="btnForos" id="btnForosPublicos">
+            <!--Cargar Botones de Foros Globales-->
+        </div>
+        <h2>Foros Proyectos:</h2>
+        <div class="btnForos" id="btnForosPrivados">
+            <!--Cargar Botones de Foros Privados-->
+        </div>
+        <button id="btnCrearForo">Crear Foro</button>
+    </div>
+
+    <div class="content">
+        <div class="visualizacionForo" id="temaForo">
+            <!--Cargar el titulo, usuario y descripcion del foro-->
+        </div>
+        <hr>
+        <div class="visualizacionForo" id="comentarios">
+            <!--Cargar los comentarios del foro-->
+        </div>
+        <div class="visualizacionForo" id="comentar">
+            <textarea id="inputComentario" placeholder="Ingrese su comentario..."></textarea>
+            <button id="btnComentar">Comentar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+body {
+    background-color: #749691;
+    margin: 0;
+    padding: 0;
+    font-family: "Comfortaa", sans-serif;
+}
+
+.menu {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    background-color: #9DBFBA;
+}
+
+.content {
+    display: block;
+    position:relative;
+    margin-left: 20%;/* Toma en cuenta el ancho del menú más un espacio adicional */
+    padding: 20px;
+    height: 100%;
+    top: 20px
+}
+
+.menu > * {
+    margin-left: 10%;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-left: 10%;
+    font-size: 60px;
+    text-shadow: 0px 4px 14.9px rgba(0, 0, 0, 0.5);
+}
+
+.btnForos {
+    background-color: beige; /*Eliminar el color*/
+    width:80%;
+    height:30%;
+}
+
+#btnCrearForo {
+    width: 80%;
+    height: 60px;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: #1E3731;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.visualizacionForo {
+    width: 100%;
+    color: #FFFFFF
+}
+
+#temaForo {
+    background-color: #FFFFFF;
+    height: 300px;
+}
+
+#temaForo>h1 {
+    font-size: 28px;
+    margin-left: 0%;
+}
+
+#comentarios {
+    background-color: aqua;
+    height: 400px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+#comentar {
+
+    height: 100px;
+    display: flex;
+    align-items: center;/* Alinear verticalmente los elementos */
+}
+
+textarea {
+    flex: 1;/* Que el textarea tome el espacio restante */
+    height: 85%;
+    border: none;
+    border-radius: 20px;
+    resize: none;
+    padding: 10px;
+    font-size: 18px;
+    font-family: "Comfortaa",sans-serif;
+}
+
+#btnComentar {
+    width: 150px;/* Ajusta el ancho del botón según sea necesario */
+    height: 100%;/* Ajusta el alto del botón según sea necesario */
+    margin-left: 10px;/* Agrega un margen entre el textarea y el botón */
+    border: none;
+    border-radius: 25px;
+    background-color: #1E3731;
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+
