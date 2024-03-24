@@ -4,13 +4,13 @@ const {AppService} = require('./AppService.js');
 
 const app = express();
 
-const DB_HOST = "34.173.7.67";
-const DB_PORT = 3306;
-const DB_NAME = "snupie_bd";
-const DB_USER = "root";
-const DB_PASSWORD = "1234";
 
-const db = new Database(DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT);
+const DB_NAME = process.env.DB_NAME;
+const DB_USER = process.env.DB_USER;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const DB_INSTANCE_CONNECTION_NAME = process.env.INSTANCE_CONNECTION_NAME;
+
+const db = new Database(DB_NAME, DB_USER, DB_PASSWORD, DB_INSTANCE_CONNECTION_NAME);
 
 const appService = new AppService(db);
 
