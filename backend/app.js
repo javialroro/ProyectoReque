@@ -81,13 +81,13 @@ app.get('/api/projectTasks/:id', async (req, res) => {
 });
 
 //
-app.put('/api/updateTask/', async (req, res) => {
+app.put('/api/updateTask/:id', async (req, res) => {
     const task = await appService.updateTask(req.body);
     res.json(task);
 });
 
-app.delete('/api/deleteTask/:name', async (req, res) => {
-    const task = await appService.deleteTask(req.params.name);
+app.delete('/api/deleteTask/:id', async (req, res) => {
+    const task = await appService.deleteTask(req.params.id);
     res.json(task);
 });
 

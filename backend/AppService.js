@@ -135,10 +135,10 @@ class AppService {
         }
     }
 
-    async updateTask(task) {
+    async updateTask(task, idTarea) {
         try {
-            const query = 'CALL actualizarTarea(?,?,?,?,?)';
-            const values = [task.nombre,task.newNombre,task.newDescripcion,task.newEstado, task.newUser]
+            const query = 'CALL actualizarTarea(?,?,?,?,?,?)';
+            const values = [idTarea,task.nombre,task.newNombre,task.newDescripcion,task.newEstado, task.newUser]
             const response = await this.database.query(query, values);
             return response;
         } catch (error) {
@@ -146,10 +146,10 @@ class AppService {
         }
     }
 
-    async deleteTask(nombre) {
+    async deleteTask(idTarea) {
         try {
             const query = 'CALL eliminarTarea(?)';
-            const values = [nombre]
+            const values = [idTarea]
             const response = await this.database.query(query, values);
             return response;
         } catch (error) {

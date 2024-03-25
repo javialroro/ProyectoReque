@@ -223,6 +223,7 @@ DELIMITER ;
 -- proced que recibe datos de una tarea y le hace un update con los datos ingresados
 DELIMITER //
 CREATE PROCEDURE actualizarTarea(
+    IN _idTarea INT,
 	IN nombre  NVARCHAR(255),
 	IN nuevoNombre NVARCHAR(255),
     IN nuevaDesc NVARCHAR(255),
@@ -235,7 +236,7 @@ BEGIN
 			descripcion = nuevaDesc,
 			idEstado = nuevoEstado,
 			idUsuario = nuevoUsuario
-		WHERE Tareas.nombre = nombre;
+		WHERE Tareas.idTarea = _idTarea;
 END //
 
 
@@ -244,11 +245,11 @@ END //
 DELIMITER //
 
 CREATE PROCEDURE eliminarTarea(
-    IN nombreTarea NVARCHAR(255)
+    IN _idTarea INT
 )
 BEGIN
     DELETE FROM Tareas
-    WHERE Tareas.nombre = nombreTarea;
+    WHERE Tareas.idTarea = _idTarea;
 END //
 
 DELIMITER ;
