@@ -66,10 +66,10 @@ class AppService {
         }
     }
 
-    async updateUser(user) {
+    async updateUser(user,idUsuario) {
         try {
-            const query = 'CALL modificarUsuario(?, ?, ?, ?, ?)';
-            const values = [user.idUsuario,user.correoElectronico,user.departamento,
+            const query = 'CALL modificarColaborador(?, ?, ?, ?, ?)';
+            const values = [idUsuario,user.correoElectronico,user.departamento,
             user.numeroTelefono,user.estado]
             const newUser = await this.database.query(query, values);
             return newUser;
@@ -104,14 +104,25 @@ class AppService {
 
     async login(user) {
         try {
-            const query = 'CALL login(?,?)';
-            const values = [user.correoElectronico,user.contrasena]
-            const response = await this.database.query(query, values);
-            return response;
+            const query = 'CALL login(?,?,@respuesta)';
+            const values = [user.correoElectronico, user.contrasena];
+            // Llamar al procedimiento almacenado y esperar la respuesta
+            await this.database.query(query, values);
+    
+            // Después de llamar al procedimiento, obtener el valor de la variable de sesión @respuesta
+            const result = await this.database.query('SELECT @respuesta AS respuesta');
+    
+            // El resultado de la autenticación está en el campo "respuesta"
+            const { respuesta } = result[0];
+    
+            // Devolver el resultado de la autenticación
+            return respuesta;
         } catch (error) {
             console.error('Failed to login:', error);
+            throw error; // Re-lanza el error para que pueda ser manejado en el nivel superior
         }
     }
+    
 
     async projectTasks(id) {
         try {

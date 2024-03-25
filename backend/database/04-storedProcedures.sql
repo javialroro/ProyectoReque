@@ -162,7 +162,7 @@ DELIMITER //
 
 CREATE PROCEDURE LOGIN(
     IN p_email NVARCHAR(255),
-    IN p_contraseña NVARCHAR(255),
+    IN p_contrasena NVARCHAR(255),
     OUT respuesta BOOLEAN
 )
 BEGIN    
@@ -170,8 +170,8 @@ BEGIN
 
     -- Verificar si el correo y la contraseña coinciden
     SELECT COUNT(*) INTO existe
-    FROM usuario
-    WHERE usuario.correoElectronico = p_email AND usuario.contrasena = p_contraseña;
+    FROM Usuario
+    WHERE Usuario.correoElectronico = p_email AND Usuario.contrasena = p_contrasena;
 
     -- Si existe al menos un usuario con el correo y contraseña proporcionados, establecer el resultado como true
     IF existe > 0 THEN

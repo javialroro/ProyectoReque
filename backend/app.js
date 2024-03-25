@@ -48,13 +48,15 @@ app.get('/api/usersNotAsigned', async (req, res) => {
     res.json(users);
 });
 
-app.post('/api/asignProject', async (req, res) => {
+
+app.put('/api/asignProject', async (req, res) => {
     const user = await appService.asignProject(req.body);
     res.json(user);
 });
 
-app.put('/api/updateUser', async (req, res) => {
-    const user = await appService.updateUser(req.body);
+
+app.put('/api/updateUser/:id', async (req, res) => {
+    const user = await appService.updateUser(req.body, req.params.id);
     res.json(user);
 });
 
@@ -78,7 +80,8 @@ app.get('/api/projectTasks/:id', async (req, res) => {
     res.json(tasks);
 });
 
-app.put('/api/updateTask', async (req, res) => {
+//
+app.put('/api/updateTask/', async (req, res) => {
     const task = await appService.updateTask(req.body);
     res.json(task);
 });
