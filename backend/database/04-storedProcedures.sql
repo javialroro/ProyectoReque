@@ -310,4 +310,13 @@ END //
 DELIMITER ;
 
 
+-- Obtener todos los usuarios que son administradores
+DELIMITER //
 
+CREATE PROCEDURE mostrarAdministradores()
+BEGIN
+    SELECT * FROM Usuario 
+    WHERE Usuario.idRol = 1;
+END //
+
+DELIMITER ;
