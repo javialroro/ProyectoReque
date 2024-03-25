@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const {Database} = require('./db.js');
 const {AppService} = require('./AppService.js');
 
@@ -15,6 +16,7 @@ const db = new Database(DB_NAME, DB_USER, DB_PASSWORD, DB_INSTANCE_CONNECTION_NA
 const appService = new AppService(db);
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('Hello World');
