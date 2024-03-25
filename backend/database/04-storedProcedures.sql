@@ -152,3 +152,162 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+
+
+-- proced login 
+
+DELIMITER //
+
+CREATE PROCEDURE LOGIN(
+    IN p_email NVARCHAR(255),
+    IN p_contrasena NVARCHAR(255),
+    OUT respuesta BOOLEAN
+)
+BEGIN    
+    DECLARE existe INT;
+
+    -- Verificar si el correo y la contraseña coinciden
+    SELECT COUNT(*) INTO existe
+    FROM Usuario
+    WHERE Usuario.correoElectronico = p_email AND Usuario.contrasena = p_contrasena;
+
+    -- Si existe al menos un usuario con el correo y contraseña proporcionados, establecer el resultado como true
+    IF existe > 0 THEN
+        SET respuesta = TRUE;
+    ELSE
+        SET respuesta = FALSE;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+
+
+-- para consultar proyectos
+-- proced que recibe un id de proyecto y devuelve todas sus tareas con sus estados y el nombre de la persona a cargo de la tarea
+DELIMITER //
+
+CREATE PROCEDURE infoTareasDeProyecto(
+    IN idProyecto INT
+)
+BEGIN
+    SELECT Tareas.nombre, EstadoTarea.nombre AS estado, Usuario.nombre AS responsable
+    FROM Tareas
+    INNER JOIN EstadoTarea ON EstadoTarea.idEstado = Tareas.idEstado
+    INNER JOIN Usuario ON Usuario.idUsuario = Tareas.idUsuario
+    WHERE Tareas.idProyecto = idProyecto;
+END//
+
+DELIMITER ;
+
+
+
+-- para modificar proyecto
+-- proced que recibe un id o nombre de proyecto y devuelve todas sus tareas
+DELIMITER //
+CREATE PROCEDURE tareasDeProyecto(
+ IN idProyecto INT
+ )
+ BEGIN
+	SELECT idTarea, nombre
+	FROM Tareas
+	WHERE Tareas.idProyecto = idProyecto;
+
+END//
+
+DELIMITER ;
+
+-- proced que recibe datos de una tarea y le hace un update con los datos ingresados
+DELIMITER //
+CREATE PROCEDURE actualizarTarea(
+    IN _idTarea INT,
+	IN nuevoNombre NVARCHAR(255),
+    IN nuevaDesc NVARCHAR(255),
+    IN nuevoEstado INT,
+    IN nuevoUsuario INT    
+)
+BEGIN
+	UPDATE Tareas
+		SET nombre = nuevoNombre,
+			descripcion = nuevaDesc,
+			idEstado = nuevoEstado,
+			idUsuario = nuevoUsuario
+		WHERE Tareas.idTarea = _idTarea;
+END //
+
+
+
+-- proced que recibe nombre de tarea y la elimina
+DELIMITER //
+
+CREATE PROCEDURE eliminarTarea(
+    IN _idTarea INT
+)
+BEGIN
+    DELETE FROM Tareas
+    WHERE Tareas.idTarea = _idTarea;
+END //
+
+DELIMITER ;
+
+
+
+
+
+-- para foros
+-- proced que recibe el id de un foro y devuelve todos los comentarios de ese foro 
+DELIMITER //
+
+CREATE PROCEDURE ObtenerComentariosDeForo(
+    IN idForo INT
+)
+BEGIN
+    SELECT idComentario, idForo, idUsuario, mensaje, fecha
+    FROM ForoComentarios
+    WHERE ForoComentarios.idForo = idForo;
+END //
+
+DELIMITER ;
+
+
+-- proced que recibe un id de usuario, verifica si el usuario es admin, si es admin muestra todos los foros de la empresa, si es colaborador muestra los foros del proyecto en el que esta trabajando el colaborador
+
+
+DELIMITER //
+
+CREATE PROCEDURE MostrarForosSegunUsuario(
+    IN userID INT
+)
+BEGIN
+    DECLARE userRoleID INT;
+
+    -- Obtener el ID del rol del usuario
+    SELECT idRol INTO userRoleID
+    FROM Usuario
+    WHERE idUsuario = userID;
+
+    -- Si el usuario es administrador, muestra todos los foros de la empresa
+    IF userRoleID = 1 THEN
+        SELECT idForo, idProyecto, tema, idUsuario, descripcion
+        FROM Foro;
+        
+    -- Si el usuario es colaborador, muestra los foros del proyecto en el que está trabajando
+    ELSEIF userRoleID = 2 THEN
+        SELECT f.idForo, f.idProyecto, f.tema, f.idUsuario, f.descripcion
+        FROM Foro f
+        INNER JOIN Usuario u ON f.idProyecto = u.idProyecto
+        WHERE u.idUsuario = userID;
+
+    -- Si el usuario no es ni administrador ni colaborador, no muestra nada
+    ELSE
+        SELECT 'El usuario no tiene un rol válido';
+    END IF;
+END //
+
+DELIMITER ;
+
+
+
