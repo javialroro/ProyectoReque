@@ -27,10 +27,10 @@ INSERT INTO EstadoUsuario (nombre) VALUES
 ('Inactivo');
 
 -- Inserts para la tabla Usuario
-INSERT INTO Usuario (nombre, cedula, correoElectronico, departamento, contrasena, idRol, IdEstado) VALUES 
-('Juan Pérez', '1234567890', 'juan@example.com', 'Desarrollo', 'contraseña123', 1, 1),
-('María Gómez', '0987654321', 'maria@example.com', 'Diseño', 'contraseña456', 2, 1),
-('Carlos Rodríguez', '5678901234', 'carlos@example.com', 'QA', 'contraseña789', 2, 1);
+INSERT INTO Usuario (nombre, cedula, correoElectronico, departamento, numeroTelefono, contrasena, idRol, IdEstado) VALUES 
+('Juan Pérez', '1234567890', 'juan@example.com', 'Desarrollo', '4565456', 'contraseña123', 1, 1),
+('María Gómez', '0987654321', 'maria@example.com', 'Diseño', '123132132', 'contraseña456', 2, 1),
+('Carlos Rodríguez', '5678901234', 'carlos@example.com', 'QA', '98789787', 'contraseña789', 2, 1);
 
 -- Inserts para la tabla Tareas
 INSERT INTO Tareas (idProyecto, nombre, descripcion, idEstado, idUsuario) VALUES 
