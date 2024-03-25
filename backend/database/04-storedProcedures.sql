@@ -224,7 +224,6 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE actualizarTarea(
     IN _idTarea INT,
-	IN nombre  NVARCHAR(255),
 	IN nuevoNombre NVARCHAR(255),
     IN nuevaDesc NVARCHAR(255),
     IN nuevoEstado INT,
