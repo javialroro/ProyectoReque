@@ -23,8 +23,8 @@ INSERT INTO EstadoTarea (nombre) VALUES
 
 -- Inserts para la tabla EstadoUsuario
 INSERT INTO EstadoUsuario (nombre) VALUES 
-('Activo'),
-('Inactivo');
+('Disponible'),
+('Ocupado');
 
 -- Inserts para la tabla Usuario
 INSERT INTO Usuario (nombre, cedula, correoElectronico, departamento, numeroTelefono, contrasena, idRol, IdEstado) VALUES 

@@ -11,9 +11,6 @@
             <div class="box" id="selecColab">
                 <label for="selectColab">Seleccione el colaborador:</label>
                 <select id="selectColab" name="escogerColaborador">
-                    <option value="opcion1">Opcion 1</option>
-                    <option value="opcion2">Opcion 2</option>
-                    <option value="opcion3">Opcion 3</option>
                 </select>
             </div>
             <div class="box" id="nuevosDatos">
@@ -26,11 +23,12 @@
                 <input type="text" id="campoTelefono" name="telefono">
                 <label for="selectEstado">Estado:</label>
                 <select id="selectEstado" name="escogerEstado">
-                    <option value="opcion1">Disponible</option>
-                    <option value="opcion2">Trabajando en un proyecto</option>
+                    <option value=1>Disponible</option>
+                    <option value=2>Ocupado</option>
                 </select>
-                <button class="btnActualizar">Actualizar</button>
+                <button class="btnActualizar" onclick="modificarInfo()">Actualizar</button>
             </div>
         </div>
+        <script src="../scripts/scriptsModificarColab.js"></script>
     </body>
 </html>

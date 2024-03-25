@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>Snupie - Crear Proyecto</title>
         <link rel="stylesheet" href="../src/styles/styleCrearProy.css">
-        <script src="../scripts/scripts.js"></script>
     </head>
     <body>
         <header class="Name-Page">Snupie</header>
@@ -37,13 +36,9 @@
                 <input type="date" id="fechaInicio" name="fechaInicioProyecto">
                 <label for="historial">Historial de Cambios:</label>
                 <textarea id="historial" name="historialProyecto"></textarea>
-                <label for="tarea">Tareas:</label>
-                <input type="text "id="tarea" name="tareaProyecto">
-                <input type="number" id="storyPointTarea" id="storypoint" name="storypoint">
-                <button id="btnAgrTarea" onclick="agregarTarea()">+</button>
-                <ul id="tareasDeProy">
-                </ul>
+                <button id="btnCrear">Crear Proyecto</button>
             </div>
         </div>
+        <script src="../scripts/scriptsCrearProy.js"></script>
     </body>
 </html>
