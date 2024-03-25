@@ -86,7 +86,7 @@ CREATE PROCEDURE asignarProyectoAColaborador(
 )
 BEGIN
     update Usuario
-    set Usuario.idProyecto = p_idProyecto
+    set Usuario.idProyecto = p_idProyecto, Usuario.IdEstado = 2
     where Usuario.idUsuario = p_idUsuario;
 END //
 
