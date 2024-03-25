@@ -36,7 +36,8 @@ INSERT INTO Usuario (nombre, cedula, correoElectronico, departamento, contrasena
 INSERT INTO Tareas (idProyecto, nombre, descripcion, idEstado, idUsuario) VALUES 
 (1, 'Proyecto 1', 'Descripción de la tarea 1 del Proyecto 1', 1, 1),
 (2, 'Proyecto 2', 'Descripción de la tarea 1 del Proyecto 2', 2, 2),
-(3, 'Proyecto 3', 'Descripción de la tarea 1 del Proyecto 3', 3, 1);
+(3, 'Proyecto 3', 'Descripción de la tarea 1 del Proyecto 3', 3, 1),
+(3, 'Proyecto 4', 'Descripción de la tarea 2 del Proyecto 3', 1, 1);
 
 -- Inserts para la tabla HistorialProyecto
 INSERT INTO HistorialProyecto (hora, descripcion, idProyecto) VALUES 

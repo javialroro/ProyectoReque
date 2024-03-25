@@ -29,21 +29,21 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Cargar el JSON utilizando fetch
-    fetch('../public/a.json')
+    fetch('http://localhost:3000/api/getTaskState')
         .then(response => response.json())
-        .then(jsonData => {
-            // Aquí jsonData es el objeto JSON cargado
-            // Construir los datos para el gráfico
-
-            var labels = Object.keys(jsonData);
-            var values = Object.values(jsonData);
-
+        .then(data => {
+            // Filtrar solo los elementos del JSON que tienen nombre y cantidad
+            var jsonData = data[0].filter(item => item.nombre && item.Cantidad); //Data[0] es la informacion que interesa
+            console.log(jsonData);
+            // Obtener las etiquetas y los valores del JSON filtrado
+            var labels = jsonData.map(item => item.nombre);
+            var values = jsonData.map(item => item.Cantidad);
             // Construir el objeto data para el gráfico
             var data = {
                 labels: labels,
                 datasets: [{
                     label: 'Numero de Tareas',
-                    backgroundColor: ['red','yellow','green'], // Color de las barras
+                    backgroundColor: ['red', 'yellow', 'green'], // Color de las barras
                     data: values
                 }]
             };
@@ -56,6 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         })
         .catch(error => {
-            console.error('Error al cargar el archivo JSON:', error);
+            alert('Error al cargar el archivo JSON:', error);
         });
 });
