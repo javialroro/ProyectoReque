@@ -1,11 +1,23 @@
 //==============Pantalla Crear Proyecto-----------------------------
 
 function crearProyecto() {
-    var nombreProyecto = document.getElementById('nombreProyecto');
-    var recursos = document.getElementById('recursos');
-    var responsable = document.getElementById('responsable');
+    var nombreProyecto = document.getElementById('nombreProyecto').value;
+    var recursos = document.getElementById('recursos').value;
+    var presupuesto = document.getElementById('presupuesto').value;
+    var responsable = document.getElementById('responsable').value;
+    var descripcion = document.getElementById('descripcion').value;
+    var fechaDeInicio = document.getElementById('fechaInicio').value;
+    var historial = document.getElementById('historial').value;
 
+    alert(nombreProyecto + "\n" +
+            recursos + "\n" +
+            presupuesto + "\n" +
+            responsable + "\n" +
+            descripcion + "\n" +
+            fechaDeInicio + "\n" +
+            historial);
 
+//Sin terminar
 
     // fetch('http://localhost:3000/api/createProject', {
     //     method: 'POST',
