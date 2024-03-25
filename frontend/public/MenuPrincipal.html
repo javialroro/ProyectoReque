@@ -4,17 +4,32 @@
         <meta charset="UTF-8">
         <title>Snupie - Menu Principal</title>
         <link rel="stylesheet" href="../src/styles/styleMenu.css"/>
+        <script src="../scripts/scripts.js"></script>
     </head>
     <body>
         <h1 class="Name-Page">Snupie</h1>
         <div class="Square-Menu">
-            <button class="botonLogin">Asignación de colaboradores</button>
-            <button class="botonLogin">Modificar información colaborador</button>
-            <button class="botonLogin">Creación de Proyectos</button>
-            <button class="botonLogin">Consulta de Proyectos</button>
-            <button class="botonLogin">Modificar información proyecto</button>
-            <button class="botonLogin">Informe General</button>
-            <button class="botonLogin">Foros</button>
+            <button id="btnAsignar" onclick="enviarAAsignarColab()">
+                Asignación de colaboradores
+            </button>
+            <button id="btnModColab" onclick="enviarAModColab()">
+                Modificar información colaborador
+            </button>
+            <button id="btnCrearProyecto" onclick="enviarACrearProyecto()">
+                Creación de Proyectos
+            </button>
+            <button id="btnConsultarProyecto" onclick="enviarAConsultarProyecto()">
+                Consulta de Proyectos
+            </button>
+            <button id="btnModProyecto" onclick="enviarAModProyecto()">
+                Modificar información proyecto
+            </button>
+            <button id="btnInformeGeneral" onclick="enviarAInformeGeneral()">
+                Informe General
+            </button>
+            <button id="btnForos" onclick="enviarAForos()">
+                Foros
+            </button>
         </div>
     </body>
 </html>
