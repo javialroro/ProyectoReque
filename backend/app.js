@@ -82,7 +82,7 @@ app.get('/api/projectTasks/:id', async (req, res) => {
 
 //
 app.put('/api/updateTask/:id', async (req, res) => {
-    const task = await appService.updateTask(req.body);
+    const task = await appService.updateTask(req.body, req.params.id);
     res.json(task);
 });
 
