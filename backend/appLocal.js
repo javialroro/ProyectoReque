@@ -40,6 +40,66 @@ app.get('/api/getTaskState', async (req, res) => {
     res.json(taskState);
 });
 
+app.post('/api/register', async (req, res) => {
+    const user = await appService.registerUser(req.body);
+    res.json(user);
+});
+
+app.get('/api/usersNotAsigned', async (req, res) => {
+    const users = await appService.usersNotAsigned();
+    res.json(users);
+});
+
+app.post('/api/asignProject', async (req, res) => {
+    const user = await appService.asignProject(req.body);
+    res.json(user);
+});
+
+app.put('/api/updateUser', async (req, res) => {
+    const user = await appService.updateUser(req.body);
+    res.json(user);
+});
+
+app.post('/api/createProject', async (req, res) => {
+    const project = await appService.createProject(req.body);
+    res.json(project);
+});
+
+app.post('/api/createTask', async (req, res) => {
+    const task = await appService.createTask(req.body);
+    res.json(task);
+});
+
+app.post('/api/login', async (req, res) => {
+    const user = await appService.login(req.body);
+    res.json(user);
+});
+
+app.get('/api/projectTasks/:id', async (req, res) => {
+    const tasks = await appService.projectTasks(req.params.id);
+    res.json(tasks);
+});
+
+app.put('/api/updateTask', async (req, res) => {
+    const task = await appService.updateTask(req.body);
+    res.json(task);
+});
+
+app.delete('/api/deleteTask/:name', async (req, res) => {
+    const task = await appService.deleteTask(req.params.name);
+    res.json(task);
+});
+
+app.get('/api/forumComments/:id', async (req, res) => {
+    const tasks = await appService.getForumComments(req.params.id);
+    res.json(tasks);
+});
+
+app.get('/api/forumComments/user/:id', async (req, res) => {
+    const tasks = await appService.getUserForums(req.params.id);
+    res.json(tasks);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
