@@ -39,8 +39,6 @@ END //
 
 DELIMITER ;
 
-
-
 -- Registrar usuario
 
 DELIMITER //

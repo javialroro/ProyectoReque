@@ -5,7 +5,7 @@ class AppService {
 
     async getUsers() {
         try {
-            const query = 'SELECT * FROM usuario';
+            const query = 'SELECT * FROM Usuario';
             const users = await this.database.query(query);
             return users;
         } catch (error) {
