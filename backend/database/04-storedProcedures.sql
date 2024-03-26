@@ -209,8 +209,9 @@ CREATE PROCEDURE tareasDeProyecto(
  IN idProyecto INT
  )
  BEGIN
-	SELECT idTarea, nombre
+	SELECT idTarea, Tareas.nombre, Usuario.nombre as UsuarioACargo, storyPoints, descripcion
 	FROM Tareas
+    INNER JOIN Usuario ON Usuario.idUsuario = Tareas.idUsuario
 	WHERE Tareas.idProyecto = idProyecto;
 
 END//
