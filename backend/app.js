@@ -101,6 +101,10 @@ app.get('/api/forumComments/user/:id', async (req, res) => {
     res.json(tasks);
 });
 
+app.get('/api/projectWorkers/:id', async (req, res) => {
+    const users = await appService.projectWorkers(req.params.id);
+    res.json(users);
+});
 
 
 const PORT = 5000;

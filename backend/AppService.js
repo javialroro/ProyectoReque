@@ -179,6 +179,17 @@ class AppService {
         }
     }
 
+    async projectWorkers(idProyecto) {
+        try {
+            const query = 'CALL mostrarColaboradoresPorProyecto(?)';
+            const values = [idProyecto]
+            const users = await this.database.query(query, values);
+            return users;
+        } catch (error) {
+            console.error('Failed to get workers:', error);
+        }
+    }
+
 
 }
 
