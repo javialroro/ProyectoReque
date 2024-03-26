@@ -41,5 +41,5 @@ function iniciarLogIn() {
 
 
 function enviarSignUp() {
-    window.location.href= './Sign Up.html'
+    window.location.href= './SignUp.html'
 }

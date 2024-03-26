@@ -1,0 +1,27 @@
+runtime: nodejs20
+
+handlers:
+- url: /css
+  static_dir: www/css
+
+- url: /js
+  static_dir: www/js
+
+- url: /images
+  static_dir: www/images
+
+- url: /(.*\.html)
+  static_files: www/\1
+  upload: www/(.*\.html)
+
+- url: /(.*\.css)
+  static_files: www/css/\1
+  upload: www/css/(.*\.css)
+
+- url: /(.*\.js)
+  static_files: www/js/\1
+  upload: www/js/(.*\.js)
+
+- url: /.*
+  static_files: www/index.html
+  upload: www/index.html
