@@ -317,3 +317,19 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+--Mostrar colaboradores por proyecto
+
+
+DELIMITER //
+
+CREATE PROCEDURE mostrarColaboradoresPorProyecto(
+	IN p_idProyecto INT
+)
+BEGIN
+    SELECT * FROM Usuario 
+    WHERE Usuario.idProyecto = p_idProyecto;
+END //
+
+DELIMITER ;
