@@ -201,6 +201,30 @@ class AppService {
         }
     }
 
+    async createForum(forum) {
+        try{
+            const query = 'CALL crearForo(?,?,?,?)';
+            const values = [forum.idProyecto,forum.tema,forum.idUsuario,forum.descripcion]
+            const newForum = await this.database.query(query, values);
+            return newForum;
+        }
+        catch (error) {
+            console.error('Failed to create forum:', error);
+        }
+    }
+
+    async createComment(comment) {
+        try{
+            const query = 'CALL crearComentarioForo(?,?,?)';
+            const values = [comment.idForo,comment.idUsuario,comment.mensaje]
+            const newComment = await this.database.query(query, values);
+            return newComment;
+        }
+        catch (error) {
+            console.error('Failed to create comment:', error);
+        }
+    }
+
 
 }
 

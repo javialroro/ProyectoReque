@@ -112,6 +112,16 @@ app.get('/api/projectWorkers/:id', async (req, res) => {
     res.json(users);
 });
 
+app.post('/api/createForum', async (req, res) => {
+    const forum = await appService.createForum(req.body);
+    res.json(forum);
+});
+
+app.post('/api/createComment', async (req, res) => {
+    const comment = await appService.createComment(req.body);
+    res.json(comment);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
