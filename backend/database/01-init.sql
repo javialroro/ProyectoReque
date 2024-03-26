@@ -23,7 +23,9 @@ CREATE TABLE  Tareas (
     nombre NVARCHAR(255),
     descripcion NVARCHAR(255),
     idEstado INT,
-    idUsuario INT
+    idUsuario INT,
+    FechaFinalizacion DATE,
+    storyPoints INT
 );
 
 CREATE TABLE HistorialProyecto(
