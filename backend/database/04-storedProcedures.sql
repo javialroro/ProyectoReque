@@ -274,7 +274,6 @@ DELIMITER ;
 
 -- proced que recibe un id de usuario, verifica si el usuario es admin, si es admin muestra todos los foros de la empresa, si es colaborador muestra los foros del proyecto en el que esta trabajando el colaborador
 
-
 DELIMITER //
 
 CREATE PROCEDURE MostrarForosSegunUsuario(
@@ -290,12 +289,13 @@ BEGIN
 
     -- Si el usuario es administrador, muestra todos los foros de la empresa
     IF userRoleID = 1 THEN
-        SELECT idForo, idProyecto, tema, idUsuario, descripcion
-        FROM Foro;
+        SELECT idForo, Foro.idProyecto, tema, Usuario.nombre, descripcion
+        FROM Foro
+        INNER JOIN Usuario ON Usuario.idUsuario = Foro.IdUsuario;
         
     -- Si el usuario es colaborador, muestra los foros del proyecto en el que está trabajando
     ELSEIF userRoleID = 2 THEN
-        SELECT f.idForo, f.idProyecto, f.tema, f.idUsuario, f.descripcion
+        SELECT f.idForo, f.idProyecto, f.tema, u.nombre AS NombreUsuario, f.descripcion
         FROM Foro f
         INNER JOIN Usuario u ON f.idProyecto = u.idProyecto
         WHERE u.idUsuario = userID;
