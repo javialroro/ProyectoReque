@@ -263,8 +263,9 @@ CREATE PROCEDURE ObtenerComentariosDeForo(
     IN idForo INT
 )
 BEGIN
-    SELECT idComentario, idForo, idUsuario, mensaje, fecha
+    SELECT idComentario, idForo, Usuario.nombre, mensaje, fecha
     FROM ForoComentarios
+    INNER JOIN Usuario ON Usuario.idUsuario = ForoComentarios.idUsuario
     WHERE ForoComentarios.idForo = idForo;
 END //
 
