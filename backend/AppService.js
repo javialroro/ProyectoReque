@@ -123,10 +123,21 @@ class AppService {
         }
     }
     
-
+//Consultar
     async projectTasks(id) {
         try {
             const query = 'CALL infoTareasDeProyecto(?)';
+            const values = [id]
+            const tasks = await this.database.query(query, values);
+            return tasks;
+        } catch (error) {
+            console.error('Failed to get tasks:', error);
+        }
+    }
+//Modificar
+    async getProjectTasks(id) {
+        try {
+            const query = 'CALL tareasDeProyecto(?)';
             const values = [id]
             const tasks = await this.database.query(query, values);
             return tasks;
