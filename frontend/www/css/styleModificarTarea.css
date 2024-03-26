@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+body {
+    background-color: #749691
+}
+
+h1 {
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    text-shadow: 0px 4px 14.9px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+}
+
+.Name-Page {
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.tituloModificarTarea {
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 40px;
+    
+}
+
+.Square-ModificarTarea {
+    height: 720px;
+    width: 40%;
+    /* Cambia el ancho según tus necesidades */
+    margin-left: 30%;
+    /* Ajusta el margen izquierdo para mantener centrado */
+
+    background-color: #1E3731;
+    border-radius: 50px;
+}
+
+.datosModificarTarea {
+    width: 35%;
+    height: 70%;
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 100px;
+    display: block;
+}
+
+.datosModificarTarea > label {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+input {
+    width: 99%;
+    margin-bottom: 20px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: none
+}
+
+button {
+    background-color: #3E9994;
+    color: #FFFFFF;
+    width: 100%;
+    font-size: 32px;
+    font-family: "Comfortaa", sans-serif;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-bottom: 100px;
+}
+
+select{
+    width: 99%;
+    margin-bottom: 20px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: none
+}
+
+textarea{
+    width: 99%;
+    margin-bottom: 10px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: none;
+    resize: none;
+    height: 150px;
+}
