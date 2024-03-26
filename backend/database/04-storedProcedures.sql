@@ -330,3 +330,38 @@ BEGIN
 END //
 
 DELIMITER ;
+
+-- Crear foros
+
+DELIMITER //
+
+CREATE PROCEDURE crearForo(
+	IN p_idProyecto INT,
+    IN p_tema NVARCHAR(255),
+    IN p_idUsuario INT,
+    IN p_descripcion NVARCHAR(255)
+)
+BEGIN
+    INSERT INTO Foro (idProyecto, tema, idUsuario, descripcion) VALUES
+    (p_idProyecto, p_tema, p_idUsuario, p_descripcion);
+END //
+
+DELIMITER ;
+
+-- Comentarios de foro 
+
+DELIMITER //
+
+CREATE PROCEDURE crearComentarioForo(
+	IN p_idForo INT,
+    IN p_idUsuario INT,
+    IN p_mensaje NVARCHAR(255)
+)
+BEGIN
+    INSERT INTO ForoComentarios (idForo, idUsuario, mensaje, fecha) VALUES 
+    (p_idForo, p_idUsuario, p_mensaje, now());
+END //
+
+DELIMITER ;
+
+
