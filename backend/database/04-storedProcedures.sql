@@ -319,10 +319,6 @@ END //
 
 DELIMITER ;
 
-
---Mostrar colaboradores por proyecto
-
-
 DELIMITER //
 
 CREATE PROCEDURE mostrarColaboradoresPorProyecto(

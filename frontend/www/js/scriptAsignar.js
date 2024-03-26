@@ -50,11 +50,6 @@ function asignarColaborador() {
     });
 }
 
-
-
-
-
-
 document.addEventListener('DOMContentLoaded',function(){
     fetch('http://localhost:3000/api/projects')
         .then(response => response.json())

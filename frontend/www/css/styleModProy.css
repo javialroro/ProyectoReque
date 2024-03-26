@@ -13,8 +13,22 @@ body {
     text-shadow: 0px 4px 14.9px rgba(0, 0, 0, 0.5);
 }
 
-.container {
-    display: flex;
+div {
+    background-color: #1E3731;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+
+.divIzquierdo{
+    float:left;
+    width: 50%;
+    background-color: #749691;
+}
+
+.divDerecho {
+    float: right;
+    width: 50%;
+    background-color: #749691;
 }
 
 .box {
@@ -27,14 +41,78 @@ body {
 
 #selecProy{
     height: 100px;
-    margin: 10% 110px;
+    margin: 0px 110px;
+}
+
+#agregarTarea {
+    height: 500px;
+    margin: 10px 110px;
+}
+
+#agregarTarea > h1 {
+    font-family: "Comfortaa", sans-serif;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 25px;
+}
+
+#agregarTarea > label {
+    width: 35%;
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+#agregarTarea > input {
+    display: inline-block;
+    width: 90%;
+    height: 20px;
+    font-size: 16px;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+#agregarTarea > #storyPoints {
+    width: 30%;
+}
+
+#agregarTarea > textarea {
+    width: 91%;
+    height: 100px;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    resize: none;
+    border-radius: 8px;
+}
+
+button {
+    background-color: #115511;
+    color: #FFFFFF;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 50%;
+    height: 40px;
 }
 
 #tareas {
     height: 700px;
-    margin: 10px 110px;
+    margin: 0px 110px;
     overflow: auto;
-    max-height: 600px;
+    max-height: 800px;
 }
 
 #tareas::-webkit-scrollbar {
@@ -54,7 +132,7 @@ body {
 
 .tarea{
     background-color: #D9D9D9;
-    height: 220px;
+    height: 250px;
     border-radius: 20px;
     padding: 1px;
     margin-bottom: 20px;
@@ -81,7 +159,7 @@ body {
     margin-left: 25px;
 }
 
-.tarea> button {
+.tarea > button {
     background-color: #115511;
     color: #FFFFFF;
     font-family: "Comfortaa", sans-serif;
