@@ -44,19 +44,16 @@ DELIMITER ;
 DELIMITER //
 
 CREATE PROCEDURE registrarUsuario(
-    IN p_idProyecto INT,
     IN p_nombre NVARCHAR(255),
     IN p_cedula NVARCHAR(255),
     IN p_correoElectronico NVARCHAR(255),
     IN p_departamento NVARCHAR(255),
     IN p_numeroTelefono NVARCHAR(255),
-    IN p_contrasena NVARCHAR(255),
-    IN p_idRol INT,
-    IN p_IdEstado INT
+    IN p_contrasena NVARCHAR(255)
 )
 BEGIN
     INSERT INTO Usuario (idProyecto, nombre, cedula, correoElectronico, departamento, numeroTelefono, contrasena, idRol, IdEstado)
-    VALUES (p_idProyecto, p_nombre, p_cedula, p_correoElectronico, p_departamento, p_numeroTelefono, p_contrasena, p_idRol, p_IdEstado);
+    VALUES (NULL, p_nombre, p_cedula, p_correoElectronico, p_departamento, p_numeroTelefono, p_contrasena, 2, 1);
 END //
 
 DELIMITER ;

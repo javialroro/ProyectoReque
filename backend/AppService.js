@@ -35,9 +35,9 @@ class AppService {
 
     async registerUser(user) {
         try {
-            const query = 'CALL registrarUsuario(?, ?, ?, ?, ?, ?,?,?,?)';
-            const values = [user.idProyecto,user.nombre,user.cedula,user.correoElectronico,user.departamento,
-            user.numeroTelefono,user.contrasena,user.rol,user.estado]
+            const query = 'CALL registrarUsuario(?, ?, ?, ?, ?, ?)';
+            const values = [user.nombre,user.cedula,user.correoElectronico,user.departamento,
+            user.numeroTelefono,user.contrasena]
             const newUser = await this.database.query(query, values);
             return newUser;
         } catch (error) {
