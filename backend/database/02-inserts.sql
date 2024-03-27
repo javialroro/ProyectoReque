@@ -38,6 +38,10 @@ INSERT INTO Tareas (idProyecto, nombre, descripcion, idEstado, idUsuario, storyP
 (2, 'Buscar posibles clientes', 'Busqueda de clientes adecuados para la venta', 1, 2, 2),
 (3, 'Compra de equipo', 'Compra de equipo de laboratorio', 2, 1, 2),
 (1, 'Hostear web', 'Buscar host web y hostear los archivos', 3, 3,3);
+INSERT INTO Tareas (idProyecto, nombre, descripcion, idEstado, idUsuario,FechaFinalizacion, storyPoints) VALUES 
+(1, 'tarea 3 proy1', 'Descripción de la tarea 3 del Proyecto 1', 2, 3,'2024-03-19',3);
+
+
 
 -- Inserts para la tabla HistorialProyecto
 INSERT INTO HistorialProyecto (hora, descripcion, idProyecto) VALUES 
