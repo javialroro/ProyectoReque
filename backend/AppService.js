@@ -92,8 +92,8 @@ class AppService {
 
     async createTask(task) {
         try {
-            const query = 'CALL crearTarea(?,?,?,?)';
-            const values = [task.idProyecto,task.nombre,task.descripcion,task.usuario]
+            const query = 'CALL crearTarea(?,?,?,?,?)';
+            const values = [task.idProyecto,task.nombre,task.descripcion,task.usuario,task.storyPoints]
             const newTask = await this.database.query(query, values);
             return newTask;
 
@@ -104,19 +104,19 @@ class AppService {
 
     async login(user) {
         try {
-            const query = 'CALL login(?,?,@respuesta)';
+            const query = 'CALL login(?,?,@idUsuarioR, @respuesta)';
             const values = [user.correoElectronico, user.contrasena];
             // Llamar al procedimiento almacenado y esperar la respuesta
             await this.database.query(query, values);
     
             // Después de llamar al procedimiento, obtener el valor de la variable de sesión @respuesta
-            const result = await this.database.query('SELECT @respuesta AS respuesta');
+            const result = await this.database.query('SELECT @idUsuarioR, @respuesta');
     
             // El resultado de la autenticación está en el campo "respuesta"
-            const { respuesta } = result[0];
-    
-            // Devolver el resultado de la autenticación
-            return respuesta;
+            const { idUsuario, respuesta } = result[0]; // Cambiado de respuesta a idUsuario y respuesta
+        
+            // Devolver el resultado de la autenticación y el ID del usuario si está autenticado correctamente
+            return { respuesta, idUsuario };
         } catch (error) {
             console.error('Failed to login:', error);
             throw error; // Re-lanza el error para que pueda ser manejado en el nivel superior
@@ -148,8 +148,8 @@ class AppService {
 
     async updateTask(task, idTarea) {
         try {
-            const query = 'CALL actualizarTarea(?,?,?,?,?)';
-            const values = [idTarea,task.newNombre,task.newDescripcion,task.newEstado, task.newUser]
+            const query = 'CALL actualizarTarea(?,?,?,?,?,?)';
+            const values = [idTarea,task.newNombre,task.newDescripcion,task.newEstado, task.newUser, task.newStoryPoint]
             const response = await this.database.query(query, values);
             return response;
         } catch (error) {

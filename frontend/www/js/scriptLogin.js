@@ -1,5 +1,6 @@
-//--------------Pantalla Log In---------------------------
 
+
+//--------------Pantalla Log In---------------------------
 function mostrarAlerta() { //Cambiar nombre
     var email = document.getElementById('campoEmail').value;
     var password = document.getElementById('campoPassword').value;

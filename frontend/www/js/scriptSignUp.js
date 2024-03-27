@@ -15,7 +15,6 @@ function registrarUsuario(){
         contrasena:password
     }
 
-    console.log(JSON.stringify(datos));
     fetch('http://localhost:3000/api/register', {
         method: 'POST',
         headers: {
@@ -26,7 +25,8 @@ function registrarUsuario(){
     .then(response => response.json())
     .then(data => {
         console.log(data);// Aquí puedes hacer algo con la respuesta del servidor si es necesario
-        window.location.href='MenuPrincipal.html'
+        
+        //window.location.href='MenuPrincipal.html'
     })
     .catch(error => {
         console.error('Error:', error);

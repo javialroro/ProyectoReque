@@ -14,7 +14,7 @@ function cargarUsuariosDelProyecto(idProyecto) {
                 option.textContent = usuario[1];
                 option.value = usuario[0];
                 select.appendChild(option);
-    });
+            });
         })
 }
 
@@ -34,18 +34,25 @@ function cargarTareas(idProyecto){
                 var h1NombreTarea = document.createElement('h1');
                 h1NombreTarea.textContent = tarea.nombre;
                 var h2Asignado = document.createElement('h2');
-                h2Asignado.textContent = 'Asignado a:' + tarea.UsuarioACargo;
+                h2Asignado.textContent = 'Asignado a: ' + tarea.UsuarioACargo;
                 var h2StoryP = document.createElement('h2');
-                h2StoryP.textContent = 'Story Points:' + tarea.storyPoints;
+                h2StoryP.textContent = 'Story Points: ' + tarea.storyPoints;
                 var pDescripcion = document.createElement('p');
                 pDescripcion.textContent = tarea.descripcion;
                 var btnModificar = document.createElement('button');
                 btnModificar.textContent = 'Modificar';
                 btnModificar.value = tarea.idTarea;
+                btnModificar.addEventListener('click', function() {
+                    var tareaAModificar = btnModificar.value;
+                    alert(idProyecto);
+                    window.location.href="./modificarTarea.html?variable=" + encodeURIComponent(tareaAModificar) + "&variable2=" + encodeURIComponent(idProyecto);
+                })
                 var btnEliminar = document.createElement('button');
                 btnEliminar.textContent = 'Eliminar';
                 btnEliminar.value = tarea.idTarea;
-
+                btnEliminar.addEventListener('click', function() {
+                    eliminarTarea(idProyecto,btnEliminar.value);
+                })
                 divTareas.appendChild(divTarea);
                 divTarea.appendChild(h1NombreTarea);
                 divTarea.appendChild(h2Asignado);
@@ -77,6 +84,64 @@ function cambiarDatos(){
     cargarUsuariosDelProyecto(idProyecto);
 }
 
+function AgregarTarea(){
+    var proyecto = document.getElementById('selectProy').value;
+    var nombreTarea = document.getElementById('nombreTarea').value;
+    var descripcion = document.getElementById('descripcion').value;
+    var asignado = document.getElementById('selectColab').value;
+    var storyPoint = document.getElementById('storyPoints').value;
+
+    var datos = {
+        idProyecto:proyecto,
+        nombre:nombreTarea,
+        descripcion:descripcion,
+        usuario:asignado,
+        storyPoints:storyPoint
+    }
+
+    console.log(JSON.stringify(datos));
+    fetch('http://localhost:3000/api/createTask', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    })
+    .then(response => response.json())
+    .then(data => {
+        cargarTareas(proyecto);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+}
+
+
+function eliminarTarea(idProyecto,idTarea){
+    fetch(`http://localhost:3000/api/deleteTask/${idTarea}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // La solicitud de eliminación fue exitosa
+            alert('La tarea fue eliminada correctamente.');
+            cargarTareas(idProyecto)
+        } else {
+            // La solicitud de eliminación falló
+            console.error('Error al intentar eliminar la tarea.');
+        }
+    })
+    .catch(error => {
+        // Manejar errores de red u otros errores
+        console.error('Hubo un error en la solicitud de eliminación:', error);
+    });
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     fetch('http://localhost:3000/api/projects')
         .then(response => response.json())
@@ -86,7 +151,5 @@ document.addEventListener('DOMContentLoaded', function () {
             var ListaProyectos = jsonData.map(item => [item.idProyecto, item.Nombre])
             cargarProyectos(ListaProyectos)
             cambiarDatos()
-
-
         })
 });

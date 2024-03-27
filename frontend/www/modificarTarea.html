@@ -13,20 +13,23 @@
         <h1 class="tituloModificarTarea">Modificar Tarea</h1>
         <div class="datosModificarTarea">
             <label for="campoNuevoNombre">Nombre nuevo:</label>
-            <input type="text" id="campoTema" name="tema">
+            <input type="text" id="campoNuevoNombre" name="tema">
             <label for="campoNuevaDescripcion">Descripción nueva:</label>
             <textarea  id="campoNuevaDescripcion" name="Descripcion"> </textarea>
             <label for="campoNuevoEstado">Nuevo estado:</label>
-            <select id="campoNuevoEstado"> 
+            <select id="campoNuevoEstado">
+                <option value="1">Pendiente</option>
+                <option value="2">En proceso</option>
+                <option value="3">Completada</option>
             </select>
             <label for="campoNuevoUsuario">Nuevo usuario:</label>
             <select id="campoNuevoUsuario"> 
             </select>
             <label for="storyPoints">Story Points:</label>
             <input type="number" id="storyPoints" name="storyPointsTarea">
-            <button class="botonModificarTarea" >Modificar</button>
+            <button class="botonModificarTarea" onclick="modificarTarea()">Modificar</button>
         </div>
     </div>
-    <!-- <script src="./js/scriptSignUp.js"></script> -->
+    <script src="./js/scriptsModificarTarea.js"></script>
 </body>
 </html>
