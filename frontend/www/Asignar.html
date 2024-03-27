@@ -9,16 +9,21 @@
         <h1 class="Name-Page">Snupie</h1>
         <div class="SelecProyecto">
             <label for="selectProyectos">Seleccione el proyecto:</label>
-            <select id="selectProyectos" name="escogerProyecto">
+            <select id="selectProyectos"  onchange="cambiarDatos()" name="escogerProyecto">
             </select>
         </div>
         <div>
-            <label for="selectColaborador">Seleccione el colaborador:</label>
+            <label for="selectColaborador">Seleccione el colaborador a asignar:</label>
             <select id="selectColaborador" name="escogerColaborador">
             </select>
         </div>
         <button class="btnAsignarColaborador" onclick="asignarColaborador()">Asignar Colaborador</button>
-        <button class="btnRegresar">Regresar</button>
+        <div>
+            <label for="selectEliminar">Seleccione el colaborador a eliminar:</label>
+            <select id="selectEliminar" name="escogerColaborador">
+            </select>
+        </div>
+        <button class="btnEliminarColaborador" onclick="eliminarColaborador()">Eliminar Colaborador</button>
         <script src="./js/scriptAsignar.js"></script>
     </body>
 </html>

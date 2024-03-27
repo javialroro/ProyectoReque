@@ -127,7 +127,7 @@ app.delete('/api/deleteUserProject/', async (req, res) => {
     res.json(forum);
 });
 
-app.delete('/api/endTask/:id', async (req, res) => {
+app.put('/api/endTask/:id', async (req, res) => {
     const forum = await appService.endTask(req.params.id);
     res.json(forum);
 });

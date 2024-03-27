@@ -58,8 +58,7 @@ function cargarTareas(idProyecto){
                 }
                 btnFinalizar.value = tarea.idTarea;
                 btnFinalizar.addEventListener('click', function() {
-                    var tareaAModificar = btnModificar.value;
-                    alert(idProyecto);
+                    finalizarTarea(idProyecto,btnFinalizar.value);
                 })
                 var btnEliminar = document.createElement('button');
                 btnEliminar.textContent = 'Eliminar';
@@ -133,8 +132,27 @@ function AgregarTarea(){
 
 }
 
-function finalizarTarea(){
-    
+function finalizarTarea(idProyecto,idTarea){
+    fetch(`http://localhost:3000/api/endTask/${idTarea}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // La solicitud de eliminación fue exitosa
+            alert('La tarea fue finalizada correctamente.');
+            cargarTareas(idProyecto)
+        } else {
+            // La solicitud de eliminación falló
+            console.error('Error al intentar finalizar la tarea.');
+        }
+    })
+    .catch(error => {
+        // Manejar errores de red u otros errores
+        console.error('Hubo un error en la solicitud de finalizacion:', error);
+    });
 }
 
 function eliminarTarea(idProyecto,idTarea){

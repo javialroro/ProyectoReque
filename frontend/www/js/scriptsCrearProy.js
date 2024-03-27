@@ -1,5 +1,6 @@
 var parametros = new URLSearchParams(window.location.search);
 var usuarioIDEnElSistema = parametros.get("usuario");
+var ColabsAProyecto = [];
 
 //==============Pantalla Crear Proyecto-----------------------------
 
@@ -12,42 +13,68 @@ function crearProyecto() {
     var fechaDeInicio = document.getElementById('fechaInicio').value;
     var historial = document.getElementById('historial').value;
 
-    alert(nombreProyecto + "\n" +
-            recursos + "\n" +
-            presupuesto + "\n" +
-            responsable + "\n" +
-            descripcion + "\n" +
-            fechaDeInicio + "\n" +
-            historial);
 
-//Sin terminar
+    var datos = {
+        nombre: nombreProyecto,
+        recursosNecesarios: recursos,
+        presupuesto: presupuesto,
+        responsable: responsable,
+        descripcion: descripcion,
+        fechaDeInicio: fechaDeInicio
+    }
 
-    // fetch('http://localhost:3000/api/createProject', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(datos)
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     location.reload();
-    //     console.log(data);// Aquí puedes hacer algo con la respuesta del servidor si es necesario
-    // })
-    // .catch(error => {
-    //     console.error('Error:', error);
-    // });
+
+    fetch('http://localhost:3000/api/createProject', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    })
+    .then(response => response.json())
+    .then(data => {
+        var idProyecto = data['@respuesta'];
+
+        ColabsAProyecto.forEach(function(idColab, index) {
+            var datos = {
+                idProyecto:parseInt(idProyecto),
+                idUsuario:parseInt(idColab)
+            }
+
+            console.log(JSON.stringify(datos));
+            fetch('http://localhost:3000/api/asignProject', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datos)
+            })
+            .then(response => response.json())
+            .then(data => {
+                location.reload();
+                console.log(data);// Aquí puedes hacer algo con la respuesta del servidor si es necesario
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        })
+
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 function agregarColab() {
-    var selectColab = document.getElementById('colaborador').value.split(",")[1];
+    var selectColab = document.getElementById('colaborador').value.split(",");
     var listaColabs = document.getElementById('colabsEnProy');
 
     var nuevoColaborador = document.createElement('li');
-    nuevoColaborador.textContent = selectColab;
-    listaColabs.appendChild(nuevoColaborador)
+    nuevoColaborador.textContent = selectColab[1];
+    listaColabs.appendChild(nuevoColaborador);
+    ColabsAProyecto.push(selectColab[0]);
+    console.log(ColabsAProyecto);
 
-    var selectColab = document.getElementById('tarea').value = '';
 }
 
 function cargarResponsable(ArrayUsuarios) {
@@ -81,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
             var ListaUsuariosSinProyecto = jsonData.map(item => [item.idUsuario, item.nombre])
             cargarColaborador(ListaUsuariosSinProyecto)
+            cargarResponsable(ListaUsuariosSinProyecto)
         })
 })
 

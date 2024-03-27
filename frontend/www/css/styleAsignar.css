@@ -17,8 +17,8 @@ div {
     background-color: #1E3731;
     height: 150px;
     width: 40%;
+    margin-top: 20px;
     margin-left: 30%;
-    margin-bottom: 3%;
     border-radius: 50px;
 }
 
@@ -50,6 +50,7 @@ button {
     border-radius: 50px;
     border: none;
     cursor: pointer;
+    margin-top: 30px;
     margin-bottom: 30px;
 }
 
@@ -60,8 +61,8 @@ button {
     width: 40%;
 }
 
-.btnRegresar {
-    background-color: #031E17;
+.btnEliminarColaborador {
+    background-color: #CA1010;
     justify-content: center;
     margin-left: 30%;
     height: 60px;
