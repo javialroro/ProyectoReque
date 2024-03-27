@@ -44,16 +44,22 @@ DELIMITER ;
 DELIMITER //
 
 CREATE PROCEDURE registrarUsuario(
+    IN p_idProyecto INT,
     IN p_nombre NVARCHAR(255),
     IN p_cedula NVARCHAR(255),
     IN p_correoElectronico NVARCHAR(255),
     IN p_departamento NVARCHAR(255),
-    IN p_numeroTelefono NVARCHAR(255),
-    IN p_contrasena NVARCHAR(255)
+    IN p_contrasena NVARCHAR(255),
+    IN p_idRol INT,
+    IN p_IdEstado INT,
+    OUT idUsuario INT
 )
 BEGIN
-    INSERT INTO Usuario (idProyecto, nombre, cedula, correoElectronico, departamento, numeroTelefono, contrasena, idRol, IdEstado)
-    VALUES (NULL, p_nombre, p_cedula, p_correoElectronico, p_departamento, p_numeroTelefono, p_contrasena, 2, 1);
+    INSERT INTO Usuario (idProyecto, nombre, cedula, correoElectronico, departamento, contrasena, idRol, IdEstado)
+    VALUES (p_idProyecto, p_nombre, p_cedula, p_correoElectronico, p_departamento, p_contrasena, p_idRol, p_IdEstado);
+
+    -- Obtener el ID del usuario recién insertado
+    SET idUsuario = LAST_INSERT_ID();
 END //
 
 DELIMITER ;
@@ -159,7 +165,8 @@ DELIMITER //
 
 CREATE PROCEDURE LOGIN(
     IN p_email NVARCHAR(255),
-    IN p_contrasena NVARCHAR(255),
+    IN p_contraseña NVARCHAR(255),
+    OUT idUsuarioR INT,
     OUT respuesta BOOLEAN
 )
 BEGIN    
@@ -167,18 +174,20 @@ BEGIN
 
     -- Verificar si el correo y la contraseña coinciden
     SELECT COUNT(*) INTO existe
-    FROM Usuario
-    WHERE Usuario.correoElectronico = p_email AND Usuario.contrasena = p_contrasena;
+    FROM usuario
+    WHERE usuario.correoElectronico = p_email AND usuario.contrasena = p_contraseña;
 
     -- Si existe al menos un usuario con el correo y contraseña proporcionados, establecer el resultado como true
     IF existe > 0 THEN
+		SELECT idUsuario INTO idUsuarioR
+		FROM usuario
+		WHERE usuario.correoElectronico = p_email AND usuario.contrasena = p_contraseña;
+        
         SET respuesta = TRUE;
     ELSE
         SET respuesta = FALSE;
     END IF;
 END //
-
-DELIMITER ;
 
 
 
