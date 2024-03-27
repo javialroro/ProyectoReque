@@ -386,3 +386,35 @@ END //
 DELIMITER ;
 
 
+
+-- Eliminar colaborador de un proyecto
+
+DELIMITER //
+
+CREATE PROCEDURE eliminarColaboradorProyecto(
+    IN p_idUsuario INT,
+    IN p_idProyecto INT
+)
+BEGIN
+    UPDATE Usuario
+    SET Usuario.idProyecto = null, Usuario.IdEstado = 1
+    WHERE Usuario.idUsuario = p_idUsuario AND Usuario.idProyecto = p_idProyecto;
+END //
+
+DELIMITER ;
+
+
+-- Finalizar tarea 
+
+DELIMITER //
+
+CREATE PROCEDURE finalizarTarea(
+    IN p_idTarea INT
+)
+BEGIN
+    UPDATE Tareas
+    SET Tareas.idEstado = 3, Tareas.FechaFinalizacion = NOW()
+    WHERE Tareas.idTarea = p_idTarea;
+END //
+
+DELIMITER ;
