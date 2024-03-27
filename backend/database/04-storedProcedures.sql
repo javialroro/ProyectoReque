@@ -420,3 +420,75 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+-- total de tareas de un proyecto para cada dia de los ultimos 22 dias 
+
+DELIMITER //
+
+CREATE PROCEDURE TotalTareasPorDia(
+    IN proyecto_id INT
+)
+BEGIN
+    DECLARE contador INT;
+    DECLARE fecha_actual DATE;
+    DECLARE total_tareas INT;
+    DECLARE i INT DEFAULT 0;
+    DECLARE column_names VARCHAR(255); -- Variable para almacenar los nombres de columna dinámicos
+    DECLARE pivot_query VARCHAR(1000); -- Consulta dinámica para pivotar los resultados
+
+    -- Crear una tabla temporal para almacenar los resultados
+    CREATE TEMPORARY TABLE IF NOT EXISTS TempTotalTareasPorDia (
+        Fecha DATE,
+        TareasRestantes INT
+    );
+
+    -- Loop para los últimos 22 días
+    WHILE i < 22 DO
+        -- Calcular la fecha para el día actual del ciclo
+        SET fecha_actual = DATE_SUB(CURDATE(), INTERVAL i DAY);
+
+        -- Obtener el total de tareas para el proyecto hasta la fecha actual
+        SELECT COUNT(*) INTO total_tareas
+        FROM Tareas
+        WHERE idProyecto = proyecto_id
+        AND (FechaFinalizacion IS NULL OR FechaFinalizacion >= fecha_actual);
+
+        -- Obtener el número de tareas completadas en la fecha actual
+        SELECT COUNT(*) INTO contador
+        FROM Tareas
+        WHERE idProyecto = proyecto_id
+        AND FechaFinalizacion = fecha_actual;
+
+        -- Calcular las tareas restantes
+        SET contador = total_tareas - contador;
+
+        -- Insertar el resultado en la tabla temporal
+        INSERT INTO TempTotalTareasPorDia (Fecha, TareasRestantes) VALUES (fecha_actual, contador);
+
+        -- Incrementar el contador
+        SET i = i + 1;
+    END WHILE;
+
+    -- Construir nombres de columna para la consulta dinámica
+    SET @column_names = '';
+    SET i = 0;
+    WHILE i < 22 DO
+        SET @column_names = CONCAT(@column_names, 'SUM(CASE WHEN Fecha = DATE_SUB(CURDATE(), INTERVAL ', i, ' DAY) THEN TareasRestantes ELSE 0 END) AS `', DATE_SUB(CURDATE(), INTERVAL i DAY), '`, ');
+        SET i = i + 1;
+    END WHILE;
+    SET @column_names = LEFT(@column_names, LENGTH(@column_names) - 2); -- Eliminar la última coma
+
+    -- Construir la consulta dinámica para pivotar los resultados
+    SET @pivot_query = CONCAT('SELECT ', @column_names, ' FROM TempTotalTareasPorDia');
+
+    -- Ejecutar la consulta dinámica
+    PREPARE stmt FROM @pivot_query;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+
+    -- Limpiar la tabla temporal
+    DROP TEMPORARY TABLE IF EXISTS TempTotalTareasPorDia;
+END //
+
+DELIMITER ;
