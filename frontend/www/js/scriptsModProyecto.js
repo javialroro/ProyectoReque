@@ -18,7 +18,6 @@ function cargarUsuariosDelProyecto(idProyecto) {
         })
 }
 
-
 function cargarTareas(idProyecto){
     fetch('http://localhost:3000/api/getProjectTasks/'+idProyecto)
         .then(response => response.json())
@@ -47,8 +46,21 @@ function cargarTareas(idProyecto){
                     alert(idProyecto);
                     window.location.href="./modificarTarea.html?variable=" + encodeURIComponent(tareaAModificar) + "&variable2=" + encodeURIComponent(idProyecto);
                 })
+                var btnFinalizar = document.createElement('button');
+                btnFinalizar.textContent = 'Finalizar';
+                if (tarea.idEstado === 3) {
+                    btnFinalizar.textContent = 'Finalizada';
+                    btnFinalizar.disabled = true;
+                    btnFinalizar.style.backgroundColor = "#0D2701"
+                }
+                btnFinalizar.value = tarea.idTarea;
+                btnFinalizar.addEventListener('click', function() {
+                    var tareaAModificar = btnModificar.value;
+                    alert(idProyecto);
+                })
                 var btnEliminar = document.createElement('button');
                 btnEliminar.textContent = 'Eliminar';
+                btnEliminar.style.backgroundColor = "#CA1010";
                 btnEliminar.value = tarea.idTarea;
                 btnEliminar.addEventListener('click', function() {
                     eliminarTarea(idProyecto,btnEliminar.value);
@@ -59,6 +71,7 @@ function cargarTareas(idProyecto){
                 divTarea.appendChild(h2StoryP);
                 divTarea.appendChild(pDescripcion);
                 divTarea.appendChild(btnModificar);
+                divTarea.appendChild(btnFinalizar);
                 divTarea.appendChild(btnEliminar);
 
             })
@@ -117,6 +130,9 @@ function AgregarTarea(){
 
 }
 
+function finalizarTarea(){
+    
+}
 
 function eliminarTarea(idProyecto,idTarea){
     fetch(`http://localhost:3000/api/deleteTask/${idTarea}`, {
