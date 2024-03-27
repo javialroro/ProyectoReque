@@ -19,7 +19,7 @@
         <div class="btnForos" id="btnForosPrivados">
             <!--Cargar Botones de Foros Privados-->
         </div>
-        <button id="btnCrearForo">Crear Foro</button>
+        <button id="btnCrearForo" onclick='EnviarCrearForo()''>Crear Foro</button>
     </div>
 
     <div class="content">
@@ -27,16 +27,17 @@
             <!--Cargar el titulo, usuario y descripcion del foro-->
         </div>
         <hr>
+        <h1 id="tituloComentarios">Comentarios</h1>
         <div class="visualizacionForo" id="comentarios">
             <!--Cargar los comentarios del foro-->
         </div>
         <div class="visualizacionForo" id="comentar">
             <textarea id="inputComentario" placeholder="Ingrese su comentario..."></textarea>
-            <button id="btnComentar">Comentar</button>
+            <button id="btnComentar" onclick="CrearComentario()">Comentar</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./js/scriptForo.js"></script>
 </body>
 
 </html>

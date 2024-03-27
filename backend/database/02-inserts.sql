@@ -49,7 +49,8 @@ INSERT INTO HistorialProyecto (hora, descripcion, idProyecto) VALUES
 INSERT INTO Foro (idProyecto, tema, idUsuario, descripcion) VALUES 
 (1, 'Dudas generales devs', 1, 'Dudas generales de desarrolladores del proyecto de la cocina'),
 (2, 'Posibles clientes', 2, 'Posibles clientes para la venta de materiales de construccion'),
-(3, 'Necesidades de equipo', 3, 'Necesidades de equipo para el laboratorio de pruebas');
+(3, 'Necesidades de equipo', 3, 'Necesidades de equipo para el laboratorio de pruebas'),
+(NULL, '¿Que hay de almuerzo en el comedor?', 1, 'Alguien sabe que es el almuerzo en el comedor');
 
 -- Inserts para la tabla ForoComentarios
 INSERT INTO ForoComentarios (idForo, idUsuario, mensaje, fecha) VALUES 

@@ -13,15 +13,16 @@
         <h1 class="tituloCrearForo">Crear foro</h1>
         <div class="datosCrearForo">
             <label for="campoProyecto">Proyecto:</label>
-            <select id="campoProyecto"> 
+            <select id="campoProyecto">
+                <option value="0">Publico</option>
             </select>     
             <label for="campoTema">Tema:</label>
             <input type="text" id="campoTema" name="tema">
             <label for="campoDescripcion">Descripción:</label>
             <textarea  id="campoDescripcion" name="Descripcion"> </textarea>
-            <button class="botonCrearForo" >Crear</button>
+            <button class="botonCrearForo" onclick="crearForo()">Crear</button>
         </div>
     </div>
-    <!-- <script src="./js/scriptSignUp.js"></script> -->
+    <script src="./js/scriptCrearForo.js"></script>
 </body>
 </html>

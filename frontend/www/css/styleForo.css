@@ -38,8 +38,7 @@ h1 {
     text-shadow: 0px 4px 14.9px rgba(0, 0, 0, 0.5);
 }
 
-.btnForos {
-    background-color: beige; /*Eliminar el color*/
+.btnForos { 
     width:80%;
     height:30%;
 }
@@ -64,8 +63,7 @@ h1 {
 }
 
 #temaForo {
-    background-color: #FFFFFF;
-    height: 300px;
+    height: 200px;
 }
 
 #temaForo>h1 {
@@ -74,8 +72,7 @@ h1 {
 }
 
 #comentarios {
-    background-color: aqua;
-    height: 400px;
+    height: 430px;
     overflow: auto;
     margin-bottom: 20px;
 }
@@ -109,8 +106,47 @@ textarea {
     font-family: "Comfortaa", sans-serif;
     font-size: 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 
+.foro-button {
+    width: 80%;
+    height: 40px;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #9DBFBA;
+    color: #000000;
+    border: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#tituloComentarios {
+    font-size: 28px;
+    margin-left: 10px;
+}
+
+.divComentario {
+    background-color: #1E3731;
+    border-radius:25px;
+    width: 90%;
+    margin-left: 3%;
+    padding: 20px;
+    margin: 20px;
+}
+
+.divComentario > h1{
+    font-size: 24px;
+    margin-left: 10px;
+
+}
+
+.divComentario>p {
+    font-size: 20px;
+    margin-left: 10px;
+}
 
 
 
