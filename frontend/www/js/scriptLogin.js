@@ -16,7 +16,6 @@ function iniciarLogIn() {
         contrasena:password
     };
 
-    console.log(JSON.stringify(datos));
     fetch('http://localhost:3000/api/login', {
         method: 'POST',
         headers: {
@@ -26,10 +25,13 @@ function iniciarLogIn() {
     })
     .then(response => response.json())
     .then(data => {
-        if (data === 1) {
+        console.log(data);
+        if (data['@respuesta'] === 1) {
             console.log("Autenticado");
-            window.location.href= './MenuPrincipal.html'
+            var idUsuarioSistema = data['@idUsuarioR'];
+            window.location.href= './MenuPrincipal.html?usuario='+ encodeURIComponent(idUsuarioSistema);
             alert("Inicio de sesión válido")
+            
         } else {
             alert("Su Email o Password son incorrectos")
         }        

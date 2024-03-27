@@ -1,3 +1,6 @@
+var parametros = new URLSearchParams(window.location.search);
+var usuarioIDEnElSistema = parametros.get("usuario");
+
 //==============Pantalla Crear Proyecto-----------------------------
 
 function crearProyecto() {

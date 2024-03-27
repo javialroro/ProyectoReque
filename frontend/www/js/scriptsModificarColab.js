@@ -1,3 +1,6 @@
+var parametros = new URLSearchParams(window.location.search);
+var usuarioIDEnElSistema = parametros.get("usuario");
+
 function modificarInfo(){
     var usuarioID = document.getElementById('selectColab').value
     var email = document.getElementById('campoEmail').value;

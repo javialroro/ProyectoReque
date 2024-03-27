@@ -25,8 +25,8 @@ function registrarUsuario(){
     .then(response => response.json())
     .then(data => {
         console.log(data);// Aquí puedes hacer algo con la respuesta del servidor si es necesario
-        
-        //window.location.href='MenuPrincipal.html'
+        var idUsuarioSistema = data['@respuesta'];
+        window.location.href='MenuPrincipal.html?usuario='+ encodeURIComponent(idUsuarioSistema);
     })
     .catch(error => {
         console.error('Error:', error);

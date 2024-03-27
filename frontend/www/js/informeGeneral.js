@@ -1,3 +1,6 @@
+var parametros = new URLSearchParams(window.location.search);
+var usuarioIDEnElSistema = parametros.get("usuario");
+
 document.addEventListener('DOMContentLoaded', function() {
     // Obtener el contexto del canvas
     var ctx = document.getElementById('graficoBarrasIG').getContext('2d');

@@ -1,3 +1,6 @@
+var parametros = new URLSearchParams(window.location.search);
+var usuarioIDEnElSistema = parametros.get("usuario");
+
 function cargarUsuariosDelProyecto(idProyecto) {
     fetch('http://localhost:3000/api/projectWorkers/'+idProyecto)
         .then(response => response.json())

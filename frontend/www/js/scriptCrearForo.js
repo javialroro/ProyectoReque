@@ -1,3 +1,6 @@
+var parametros = new URLSearchParams(window.location.search);
+var usuarioIDEnElSistema = parametros.get("usuario");
+
 function crearForo() {
     var proyecto = document.getElementById('campoProyecto').value;
     var tema = document.getElementById('campoTema').value;
@@ -10,7 +13,7 @@ function crearForo() {
     var datos = {
         idProyecto:proyecto,
         tema:tema,
-        idUsuario:1, //Crear Foro por el momento solo el 1
+        idUsuario:usuarioIDEnElSistema, //Crear Foro por el momento solo el 1
         descripcion:descripcion
     }
 
@@ -23,7 +26,7 @@ function crearForo() {
     })
     .then(response => response.json())
     .then(data => {
-        window.location.href="./foro.html";
+        window.location.href="./foro.html?usuario=" + encodeURIComponent(usuarioIDEnElSistema);
     })
     .catch(error => {
         console.error('Error:', error);

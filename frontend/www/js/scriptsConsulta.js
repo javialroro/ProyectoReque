@@ -1,3 +1,6 @@
+var parametros = new URLSearchParams(window.location.search);
+var usuarioIDEnElSistema = parametros.get("usuario");
+
 function cargarProyectos(ArrayProyectos) {
     var divIzquierdo = document.getElementById('divBotones'); // Cambiado de querySelector a getElementById
 

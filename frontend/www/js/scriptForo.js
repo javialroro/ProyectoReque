@@ -1,5 +1,8 @@
+var parametros = new URLSearchParams(window.location.search);
+var usuarioIDEnElSistema = parametros.get("usuario");
 
 var botonClickeado;
+
 
 function TransformarFecha(fechaString){
     var fecha = new Date(fechaString);
@@ -73,7 +76,7 @@ function CargarDatosForo(foro){
 }
 
 function EnviarCrearForo(){
-    window.location.href="./crearForo.html";
+    window.location.href='./crearForo.html?usuario='+ encodeURIComponent(usuarioIDEnElSistema);
 }
 
 function CrearComentario(){
@@ -82,7 +85,7 @@ function CrearComentario(){
 
     var datos = {
         idForo: parseInt(botonClickeado),
-        idUsuario: 1,
+        idUsuario: parseInt(usuarioIDEnElSistema),
         mensaje: Mensaje
     }
 
