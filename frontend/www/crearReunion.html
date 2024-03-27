@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Snupie - Crear Reunion</title>
+    <link rel="stylesheet" href="./css/styleCrearReunion.css" />
+</head>
+
+<body>
+    <h1 class="Name-Page">Snupie</h1>
+    <div class="Square-CrearReunion">
+        <h1 class="tituloCrearReunion">Crear Reunion</h1>
+        <div class="datosCrearReunion">
+            <label for="campoProyecto">Proyecto:</label>
+            <select id="campoProyecto">
+            </select>     
+            <label for="campoTema">Tema:</label>
+            <input type="text" id="campoTema" name="tema">
+            <label for="campoFecha">Fecha:</label>
+            <input type="date" id="campoFecha" name="Fecha"> </input>
+            <label for="campoFecha">Fecha:</label>
+            <input type="text" id="campoFecha" name="Fecha"> </input>
+            <label for="campoColaboradores">Colaboradores:</label>
+            <select id="colaborador" name="colaboradorProyecto">
+            </select>
+            <button class="botonAgregarColaborador" onclick="agregarColab()">+</button>
+            <ul id="colabsEnProy">
+            </ul>
+            <button class="botonCrearReunion" ">Crear</button>
+        </div>
+    </div>
+    <!-- <script src="./js/scriptCrearForo.js"></script> -->
+</body>
+</html>
