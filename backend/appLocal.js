@@ -122,6 +122,16 @@ app.post('/api/createComment', async (req, res) => {
     res.json(comment);
 });
 
+app.delete('/api/deleteUserProject/', async (req, res) => {
+    const forum = await appService.deleteUserProject(req.body);
+    res.json(forum);
+});
+
+app.delete('/api/endTask/:id', async (req, res) => {
+    const forum = await appService.endTask(req.params.id);
+    res.json(forum);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);

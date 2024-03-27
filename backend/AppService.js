@@ -225,6 +225,30 @@ class AppService {
         }
     }
 
+    async deleteUserProject(user) {
+        try{
+            const query = 'CALL eliminarColaboradorProyecto(?,?)';
+            const values = [user.idUsuario,user.idProyecto]
+            const response = await this.database.query(query, values);
+            return response;
+        }
+        catch (error) {
+            console.error('Failed to delete user:', error);
+        }
+    }
+
+    async endTask(idTarea) {
+        try{
+            const query = 'CALL finalizarTarea(?)';
+            const values = [idTarea]
+            const response = await this.database.query(query, values);
+            return response;
+        }
+        catch (error) {
+            console.error('Failed to end task:', error);
+        }
+    }
+
 
 }
 
