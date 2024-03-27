@@ -1,3 +1,5 @@
+const { response } = require("./appLocal");
+
 class AppService {
     constructor(database) {
         this.database = database;
@@ -81,11 +83,12 @@ class AppService {
 
     async createProject(project) {
         try {
-            const query = 'CALL crearProyecto(?, ?, ?, ?, ?, ?)';
+            const query = 'CALL crearProyecto(?, ?, ?, ?, ?, ?, @respuesta)';
             const values = [project.nombre,project.recursosNecesarios,project.presupuesto,
             project.responsable,project.description,project.fechaInicio]
-            const newProject = await this.database.query(query, values);
-            return newProject;
+            await this.database.query(query, values);
+            const response = await this.database.query('SELECT @respuesta');
+            return response[0];
         } catch (error) {
             console.error('Failed to create project:', error);
         }
