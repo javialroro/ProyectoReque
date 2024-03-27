@@ -3,6 +3,10 @@ function crearForo() {
     var tema = document.getElementById('campoTema').value;
     var descripcion = document.getElementById('campoDescripcion').value;
 
+    if (proyecto === '0') {
+        proyecto = null;
+    }
+
     var datos = {
         idProyecto:proyecto,
         tema:tema,
