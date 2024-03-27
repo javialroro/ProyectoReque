@@ -1,4 +1,3 @@
-const { response } = require("./appLocal");
 
 class AppService {
     constructor(database) {
