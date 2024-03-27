@@ -346,8 +346,9 @@ DELIMITER ;
 
 -- Crear foros
 
-DELIMITER //
 
+
+DELIMITER //
 CREATE PROCEDURE crearForo(
 	IN p_idProyecto INT,
     IN p_tema NVARCHAR(255),
@@ -355,8 +356,15 @@ CREATE PROCEDURE crearForo(
     IN p_descripcion NVARCHAR(255)
 )
 BEGIN
+	IF p_idProyecto = NULL THEN
+    INSERT INTO Foro (idProyecto, tema, idUsuario, descripcion) VALUES
+    (NULL, p_tema, p_idUsuario, p_descripcion);
+
+    ELSE
+
     INSERT INTO Foro (idProyecto, tema, idUsuario, descripcion) VALUES
     (p_idProyecto, p_tema, p_idUsuario, p_descripcion);
+    END IF;
 END //
 
 DELIMITER ;
