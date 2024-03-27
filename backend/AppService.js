@@ -251,6 +251,18 @@ class AppService {
         }
     }
 
+    async burnDown(idProyecto) {
+        try{
+            const query = 'CALL TotalTareasPorDia(?)';
+            const values = [idProyecto]
+            const response = await this.database.query(query, values);
+            return response;
+        }
+        catch (error) {
+            console.error('Failed to get burn down:', error);
+        }
+    }
+
 
 }
 

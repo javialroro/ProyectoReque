@@ -132,6 +132,11 @@ app.delete('/api/endTask/:id', async (req, res) => {
     res.json(forum);
 });
 
+app.get('/api/burndown/:id', async (req, res) => {
+    const burndown = await appService.burnDown(req.params.id);
+    res.json(burndown);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
