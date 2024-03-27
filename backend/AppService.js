@@ -35,11 +35,12 @@ class AppService {
 
     async registerUser(user) {
         try {
-            const query = 'CALL registrarUsuario(?, ?, ?, ?, ?, ?)';
+            const query = 'CALL registrarUsuario(?, ?, ?, ?, ?, ?, @respuesta)';
             const values = [user.nombre,user.cedula,user.correoElectronico,user.departamento,
             user.numeroTelefono,user.contrasena]
-            const newUser = await this.database.query(query, values);
-            return newUser;
+            await this.database.query(query, values);
+            const result = await this.database.query('SELECT @respuesta');
+            return result[0];
         } catch (error) {
             console.error('Failed to register user:', error);
         }
@@ -104,7 +105,7 @@ class AppService {
 
     async login(user) {
         try {
-            const query = 'CALL login(?,?,@idUsuarioR, @respuesta)';
+            const query = 'CALL login(?,?,@idUsuarioR,@respuesta)';
             const values = [user.correoElectronico, user.contrasena];
             // Llamar al procedimiento almacenado y esperar la respuesta
             await this.database.query(query, values);
@@ -113,10 +114,9 @@ class AppService {
             const result = await this.database.query('SELECT @idUsuarioR, @respuesta');
     
             // El resultado de la autenticación está en el campo "respuesta"
-            const { idUsuario, respuesta } = result[0]; // Cambiado de respuesta a idUsuario y respuesta
+            return result[0]; // Cambiado de respuesta a idUsuario y respuesta
         
             // Devolver el resultado de la autenticación y el ID del usuario si está autenticado correctamente
-            return { respuesta, idUsuario };
         } catch (error) {
             console.error('Failed to login:', error);
             throw error; // Re-lanza el error para que pueda ser manejado en el nivel superior

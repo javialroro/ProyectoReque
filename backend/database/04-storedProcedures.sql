@@ -181,7 +181,7 @@ BEGIN
     -- Si existe al menos un usuario con el correo y contraseña proporcionados, establecer el resultado como true
     IF existe > 0 THEN
 		SELECT idUsuario INTO idUsuarioR
-		FROM usuario
+		FROM Usuario
 		WHERE Usuario.correoElectronico = p_email AND Usuario.contrasena = p_contrasena;
         
         SET respuesta = TRUE;
