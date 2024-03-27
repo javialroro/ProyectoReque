@@ -127,15 +127,17 @@ CREATE PROCEDURE crearProyecto(
     IN p_Presupuesto DOUBLE,
     IN p_Responsable INT,
     IN p_descripcion NVARCHAR(255),
-    IN p_fecha_inicio DATE
+    IN p_fecha_inicio DATE,
+    OUT p_id_proyecto INT
 )
 BEGIN
-    INSERT INTO Proyectos (Nombre, recursos_necesarios, Presupuesto, Responsable, descripcion, fecha_inicio, Estado) VALUES 
-    (p_nombre, p_recursos_necesarios, p_Presupuesto, p_Responsable, p_descripcion, p_fecha_inicio, 1);
+    INSERT INTO Proyectos (Nombre, recursos_necesarios, Presupuesto, Responsable, descripcion, fecha_inicio, Estado) 
+    VALUES (p_nombre, p_recursos_necesarios, p_Presupuesto, p_Responsable, p_descripcion, p_fecha_inicio, 1);
+    
+    SET p_id_proyecto = LAST_INSERT_ID();
 END //
 
 DELIMITER ;
-
 
 
 -- proced para crear tarea y asignarla el proyecto
