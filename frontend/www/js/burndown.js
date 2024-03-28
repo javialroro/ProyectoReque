@@ -1,8 +1,11 @@
-
+var parametros = new URLSearchParams(window.location.search);
+var usuarioIDEnElSistema = parametros.get("idProyecto").split(',');
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('http://localhost:3000/api/burndown/1') //Cambiar el id 
+    var titulo = document.getElementById('Titulo');
+    titulo.textContent='Snupie - Burndown Chart - '+usuarioIDEnElSistema[1];
+    fetch('http://localhost:3000/api/burndown/'+usuarioIDEnElSistema[0]) //Cambiar el id 
         .then(response => response.json())
         .then (data => {
             const labels = Object.keys(data[0][0]);

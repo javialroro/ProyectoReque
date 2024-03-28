@@ -1,5 +1,7 @@
 var parametros = new URLSearchParams(window.location.search);
 var usuarioIDEnElSistema = parametros.get("usuario");
+var ProyectoSeleccionado;
+
 
 function cargarProyectos(ArrayProyectos) {
     var divIzquierdo = document.getElementById('divBotones'); // Cambiado de querySelector a getElementById
@@ -28,7 +30,8 @@ function cargarProyectos(ArrayProyectos) {
 
         boton.addEventListener('click', function() {
             cambiarColor(this);
-            cargarTareas(boton.value)
+            cargarTareas(boton.value);
+            ProyectoSeleccionado = boton.value;
         });
     });
 }
@@ -79,6 +82,10 @@ function cargarTareas(proyecto) {
 
                 })
     })
+}
+
+function verBurndownChart(){
+    window.location.href = "./BurndownChart.html?idProyecto="+encodeURIComponent(ProyectoSeleccionado);
 }
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -47,7 +47,7 @@ h2 {
 }
 
 #divBotones {
-    height: 700px;
+    height: 650px;
     overflow: auto;
 }
 
@@ -58,6 +58,20 @@ h2 {
 #divBotones::-webkit-scrollbar-thumb {
     background-color: #3E9994;
     border-radius: 5px;
+}
+
+#BtnBurndown {
+    background-color: #3E9994;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin: 10px auto; /* Establece el margen automático en los lados izquierdo y derecho */
+    display: block;
 }
 
 .proyecto-button {
