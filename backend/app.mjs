@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import {Database} from './dbLocal.js';
+import {Database} from './db.js';
 import {AppService} from './AppService.js';
 import  {Email}  from './email.mjs';
 const email = new Email();
@@ -147,4 +147,3 @@ app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
 
-module.exports = app;

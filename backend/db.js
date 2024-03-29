@@ -15,11 +15,13 @@ class Database {
     }
 
     connect() {
-        try {
-            this.connection.connect();
-        } catch (error) {
-            console.error('Failed to connect to database:', error);
-        }
+        this.connection.connect((err) => {
+            if (err) {
+                console.error('Failed to connect to database:', err);
+                return;
+            }
+            console.log('Connected to MySQL database');
+        });
     }
 
     disconnect() {

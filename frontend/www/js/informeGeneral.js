@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Cargar el JSON utilizando fetch
-    fetch('http://localhost:3000/api/getTaskState')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/getTaskState')
         .then(response => response.json())
         .then(data => {
             // Filtrar solo los elementos del JSON que tienen nombre y cantidad
