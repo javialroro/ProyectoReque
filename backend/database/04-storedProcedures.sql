@@ -492,3 +492,37 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+-- Crear reunion 
+
+DELIMITER //
+
+CREATE PROCEDURE crearReunion(
+	IN p_idProyecto INT,
+    IN p_tema NVARCHAR(255),
+    IN p_fecha DATE,
+    IN p_medio NVARCHAR(255)
+)
+BEGIN
+	INSERT INTO Reuniones (IdProyecto, tema, fecha, medio) VALUES 
+	(p_idProyecto, p_tema, p_fecha, p_medio);
+END //
+
+DELIMITER ;
+
+
+-- Añadir colaboradres a reunion
+
+DELIMITER //
+
+CREATE PROCEDURE anadirColaboradoresReunion(
+	IN p_idReunion INT,
+    IN p_idColaborador INT
+)
+BEGIN
+	INSERT INTO ColaboradoresReuniones (idReunion, idColaborador) VALUES 
+	(p_idReunion, p_idColaborador);
+END //
+
+DELIMITER ;
