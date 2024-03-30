@@ -1,5 +1,6 @@
 var parametros = new URLSearchParams(window.location.search);
 var usuarioIDEnElSistema = parametros.get("usuario");
+var correos = [];
 
 function cargarUsuariosDelProyecto(idProyecto) {
     fetch('http://localhost:3000/api/projectWorkers/'+idProyecto)
@@ -7,7 +8,7 @@ function cargarUsuariosDelProyecto(idProyecto) {
         .then (data => {
             var jsonData = data[0];
 
-            var usuarios = jsonData.map(item => [item.idUsuario, item.nombre])
+            var usuarios = jsonData.map(item => [item.idUsuario, item.nombre, item.correoElectronico])
             console.log(usuarios);
             
             var select = document.getElementById('selectColab')
@@ -16,6 +17,7 @@ function cargarUsuariosDelProyecto(idProyecto) {
                 var option = document.createElement('option');
                 option.textContent = usuario[1];
                 option.value = usuario[0];
+                correos.push(usuario[2]);
                 select.appendChild(option);
             });
         })
@@ -56,7 +58,7 @@ function cargarTareas(idProyecto){
                     btnFinalizar.disabled = true;
                     btnFinalizar.style.backgroundColor = "#0D2701"
                 }
-                btnFinalizar.value = tarea.idTarea;
+                btnFinalizar.value = [tarea.idTarea,tarea.nombre];
                 btnFinalizar.addEventListener('click', function() {
                     finalizarTarea(idProyecto,btnFinalizar.value);
                 })
@@ -94,6 +96,7 @@ function cargarProyectos(ArrayProyectos) {
 function cambiarDatos(){
     var selectProy = document.getElementById('selectProy');
     var idProyecto = selectProy.value + '';
+    correos = [];
 
     cargarTareas(idProyecto);
     cargarUsuariosDelProyecto(idProyecto);
@@ -121,7 +124,6 @@ function AgregarTarea(){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(datos)
-        fetch('')
     })
     .then(response => response.json())
     .then(data => {
@@ -131,10 +133,33 @@ function AgregarTarea(){
         console.error('Error:', error);
     });
 
+    var datosCorreo={
+            "correos":correos,
+            "asunto": "Se ha agregado una tarea nueva",
+            "mensaje": "Se ha agregado una tarea a un proyecto:\n" 
+            + nombreTarea +
+            "\nDescripcion:" + descripcion
+        }
+    fetch('http://localhost:3000/api/sendEmail', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datosCorreo)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
 }
 
 function finalizarTarea(idProyecto,idTarea){
-    fetch(`http://localhost:3000/api/endTask/${idTarea}`, {
+    idTarea = idTarea.split(',')
+    fetch(`http://localhost:3000/api/endTask/${idTarea[0]}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -144,6 +169,27 @@ function finalizarTarea(idProyecto,idTarea){
         if (response.ok) {
             // La solicitud de eliminación fue exitosa
             alert('La tarea fue finalizada correctamente.');
+            var datosCorreo={
+            "correos":correos,
+            "asunto": "Se ha finalizado una tarea",
+            "mensaje": "Se ha finalizado la tarea:\n" 
+            + idTarea[1]
+            }
+            fetch('http://localhost:3000/api/sendEmail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datosCorreo)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                correos = [];
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
             cargarTareas(idProyecto)
         } else {
             // La solicitud de eliminación falló
