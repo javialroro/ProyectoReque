@@ -502,14 +502,19 @@ CREATE PROCEDURE crearReunion(
 	IN p_idProyecto INT,
     IN p_tema NVARCHAR(255),
     IN p_fecha DATE,
-    IN p_medio NVARCHAR(255)
+    IN p_medio NVARCHAR(255),
+    OUT p_idReunion INT
 )
 BEGIN
 	INSERT INTO Reuniones (IdProyecto, tema, fecha, medio) VALUES 
 	(p_idProyecto, p_tema, p_fecha, p_medio);
+    
+    SET p_idReunion = LAST_INSERT_ID();
+
 END //
 
 DELIMITER ;
+
 
 
 -- Añadir colaboradres a reunion
