@@ -121,6 +121,7 @@ function AgregarTarea(){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(datos)
+        fetch('')
     })
     .then(response => response.json())
     .then(data => {

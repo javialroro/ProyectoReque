@@ -22,6 +22,10 @@ function enviarAModProyecto() {
     window.location.href= './modificarProy.html?usuario='+ encodeURIComponent(usuarioIDEnElSistema);
 }
 
+function enviarACrearReunion() {
+    window.location.href= './crearReunion.html?usuario='+ encodeURIComponent(usuarioIDEnElSistema);
+}
+
 function enviarAInformeGeneral() {
     window.location.href= './InformeGeneral.html?usuario='+ encodeURIComponent(usuarioIDEnElSistema); //Hacer la pantalla de informe general
 }
