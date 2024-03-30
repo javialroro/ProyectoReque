@@ -140,7 +140,7 @@ app.get('/api/burndown/:id', async (req, res) => {
 });
 
 app.post('/api/sendEmail', async (req, res) => {
-    const mail = await email.sendEmail(req.body.correos);
+    const mail = await email.sendEmail(req.body.correos, req.body.asunto, req.body.mensaje);
     res.json(mail);
 });
 

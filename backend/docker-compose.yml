@@ -10,7 +10,7 @@ services:
       DB_USER: myuser
       DB_PASSWORD: secret
     ports:
-      - 5000:5000
+      - 3000:3000
     networks:
       - web
     depends_on:
