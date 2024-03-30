@@ -1,4 +1,5 @@
 var ColabsAReunion = [];
+var correos=[];
 
 function agregarColab() {
     var selectColab = document.getElementById('colaborador').value.split(",");
@@ -8,6 +9,7 @@ function agregarColab() {
     nuevoColaborador.textContent = selectColab[1];
     listaColabs.appendChild(nuevoColaborador);
     ColabsAReunion.push(selectColab[0]);
+    correos.push(selectColab[2]);
     console.log(ColabsAReunion);
 
 }
@@ -18,7 +20,7 @@ function cargarColaborador(ArrayUsuarios) {
     ArrayUsuarios.forEach(function(usuario,index){
         var option = document.createElement('option');
         option.textContent = usuario[1];
-        option.value = [usuario[0],usuario[1]]; 
+        option.value = [usuario[0],usuario[1],usuario[2]]; 
         select.appendChild(option);
     });
 }
@@ -35,7 +37,77 @@ function cargarProyectos(ArrayProyectos) {
 }
 
 function crearReunion() {
+    var proyecto=document.getElementById("campoProyecto").value;
+    var tema=document.getElementById("campoTema").value;
+    var fecha=document.getElementById("campoFecha").value;
+    var medio=document.getElementById("campoMedio").value;
+
+    var datos = {
+        idProyecto: proyecto,
+        tema: tema,
+        fecha: fecha,
+        medio: medio
+    }
     
+    fetch('http://localhost:3000/api/createMeeting', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    })
+    .then(response => response.json())
+    .then(data => {
+        var idMeeting = data['@respuesta'];
+
+        ColabsAReunion.forEach(function(idColab, index) {
+            var datos = {
+                idReunion:parseInt(idMeeting),
+                idUsuario:parseInt(idColab)
+            }
+
+            console.log(JSON.stringify(datos));
+            fetch('http://localhost:3000/api/inviteMeeting', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datos)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                ColabsAReunion = [];
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        })
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    var datosCorreo={
+            "correos":correos,
+            "asunto": "Usted ha sido invitado a una reunion",
+            "mensaje": "La reunion es sobre "+ tema +" el dia "+fecha+ " por el medio " + medio
+        }
+    fetch('http://localhost:3000/api/sendEmail', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datosCorreo)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        correos = [];
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -55,7 +127,7 @@ document.addEventListener('DOMContentLoaded',function(){
             var jsonData=data;
             console.log(jsonData)
 
-            var ListaUsuarios = jsonData.map(item => [item.idUsuario, item.nombre])
+            var ListaUsuarios = jsonData.map(item => [item.idUsuario, item.nombre, item.correoElectronico])
             cargarColaborador(ListaUsuarios)
         })
 

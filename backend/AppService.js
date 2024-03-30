@@ -263,8 +263,27 @@ class AppService {
         }
     }
 
+    async createMeeting(meeting) {
+        try {
+            const query = 'CALL crearReunion(?, ?, ?, ?, @respuesta)';
+            const values = [meeting.idProyecto,meeting.tema,meeting.fecha,meeting.medio]
+            await this.database.query(query, values);
+            const response = await this.database.query('SELECT @respuesta');
+            return response[0];
+        } catch (error) {
+            console.error('Failed to create project:', error);
+        }
+    }
 
-
+    async inviteMeeting(usuario)  {
+        try {
+            const query = 'CALL anadirColaboradoresReunion(?, ?)';
+            const values = [usuario.idReunion,usuario.idUsuario]
+            return await this.database.query(query, values);
+        } catch (error) {
+            console.error('Failed to create project:', error);
+        }
+    }
 }
 
 module.exports.AppService = AppService;

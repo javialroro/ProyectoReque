@@ -144,6 +144,16 @@ app.post('/api/sendEmail', async (req, res) => {
     res.json(mail);
 });
 
+app.post('/api/createMeeting', async (req, res) => {
+    const meeting = await appService.createMeeting(req.body);
+    res.json(meeting);
+});
+
+app.post('/api/inviteMeeting', async (req, res) => {
+    const usuario = await appService.inviteMeeting(req.body);
+    res.json(usuario);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
