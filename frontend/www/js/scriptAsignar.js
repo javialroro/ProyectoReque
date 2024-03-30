@@ -36,7 +36,7 @@ function asignarColaborador() {
     };
 
     console.log(JSON.stringify(datos));
-    fetch('http://localhost:3000/api/asignProject', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/asignProject', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ function asignarColaborador() {
 }
 
 function cargarColaboradoresProyecto(idProyecto) {
-    fetch('http://localhost:3000/api/projectWorkers/'+idProyecto)
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projectWorkers/'+idProyecto)
         .then(response => response.json())
         .then (data => {
             var jsonData = data[0];
@@ -91,7 +91,7 @@ function eliminarColaborador(){
         idProyecto: Proyecto
     }
 
-    fetch('http://localhost:3000/api/deleteUserProject/', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/deleteUserProject/', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ function eliminarColaborador(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-    fetch('http://localhost:3000/api/projects')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projects')
         .then(response => response.json())
         .then (data => {
             var jsonData= data[0];
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         })
     
-    fetch('http://localhost:3000/api/usersNotAsigned')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/usersNotAsigned')
         .then(response => response.json())
         .then(data => {
             var jsonData=data[0];

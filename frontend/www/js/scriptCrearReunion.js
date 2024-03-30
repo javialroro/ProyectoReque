@@ -49,7 +49,7 @@ function crearReunion() {
         medio: medio
     }
     
-    fetch('http://localhost:3000/api/createMeeting', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/createMeeting', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ function crearReunion() {
             }
 
             console.log(JSON.stringify(datos));
-            fetch('http://localhost:3000/api/inviteMeeting', {
+            fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/inviteMeeting', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -93,7 +93,7 @@ function crearReunion() {
             "asunto": "Usted ha sido invitado a una reunion",
             "mensaje": "La reunion es sobre "+ tema +" el dia "+fecha+ " por el medio " + medio
         }
-    fetch('http://localhost:3000/api/sendEmail', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/sendEmail', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -111,7 +111,7 @@ function crearReunion() {
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-    fetch('http://localhost:3000/api/projects')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projects')
         .then(response => response.json())
         .then (data => {
             var jsonData= data[0];
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         })
 
-    fetch('http://localhost:3000/api/users')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/users')
         .then(response => response.json())
         .then(data => {
             var jsonData=data;

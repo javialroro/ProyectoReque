@@ -17,7 +17,7 @@ function crearForo() {
         descripcion:descripcion
     }
 
-    fetch('http://localhost:3000/api/createForum', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/createForum', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ function cargarProyectos(ArrayProyectos) {
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-    fetch('http://localhost:3000/api/projects')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projects')
         .then(response => response.json())
         .then (data => {
             var jsonData= data[0];

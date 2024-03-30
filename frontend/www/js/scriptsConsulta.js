@@ -39,7 +39,7 @@ function cargarProyectos(ArrayProyectos) {
 function cargarTareas(proyecto) {
     proyecto = proyecto.split(",");
 
-    fetch('http://localhost:3000/api/projectTasks/'+proyecto[0])
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projectTasks/'+proyecto[0])
         .then(response => response.json())
         .then (data => {
             var tareasJSON = data[0]
@@ -89,7 +89,7 @@ function verBurndownChart(){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://localhost:3000/api/projects')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projects')
         .then(response => response.json())
         .then (data => {
             var jsonData= data[0];

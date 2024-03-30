@@ -20,7 +20,7 @@ function modificarTarea(){
     }
 
     console.log(JSON.stringify(datos));
-     fetch('http://localhost:3000/api/updateTask/'+idTarea, {
+     fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/updateTask/'+idTarea, {
          method: 'PUT',
          headers: {
              'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ function modificarTarea(){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://localhost:3000/api/projectWorkers/'+idProyecto)
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projectWorkers/'+idProyecto)
         .then(response => response.json())
         .then (data => {
             var jsonData = data[0];

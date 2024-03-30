@@ -24,7 +24,7 @@ function crearProyecto() {
     }
 
 
-    fetch('http://localhost:3000/api/createProject', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/createProject', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ function crearProyecto() {
             }
 
             console.log(JSON.stringify(datos));
-            fetch('http://localhost:3000/api/asignProject', {
+            fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/asignProject', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ function cargarColaborador(ArrayUsuarios) {
 
 document.addEventListener('DOMContentLoaded', function(){
 
-    fetch('http://localhost:3000/api/usersNotAsigned')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/usersNotAsigned')
         .then(response => response.json())
         .then(data => {
             var jsonData=data[0];

@@ -17,7 +17,7 @@ function modificarInfo(){
 
     console.log(JSON.stringify(datos));
 
-    fetch('http://localhost:3000/api/updateUser/' + usuarioID, {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/updateUser/' + usuarioID, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ function cargarUsuarios(ArrayUsuarios) {
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    fetch('http://localhost:3000/api/users')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/users')
         .then(response => response.json())
         .then(data => {
             var jsonData=data;

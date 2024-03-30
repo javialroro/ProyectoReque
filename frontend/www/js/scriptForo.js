@@ -66,7 +66,7 @@ function CargarDatosForo(foro){
     divEncabezado.appendChild(h2Publicado);
     divEncabezado.appendChild(pDescripcion);
 
-    fetch('http://localhost:3000/api/forumComments/'+datosForo[0])
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/forumComments/'+datosForo[0])
         .then(response => response.json())
         .then (data => {
             CargarComentarios(data[0]);
@@ -89,7 +89,7 @@ function CrearComentario(){
         mensaje: Mensaje
     }
 
-    fetch('http://localhost:3000/api/createComment', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/createComment', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -107,7 +107,7 @@ function CrearComentario(){
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    fetch('http://localhost:3000/api/forumComments/user/1') //Cambiar para el usuario que esta usando el sistema
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/forumComments/user/1') //Cambiar para el usuario que esta usando el sistema
         .then(response => response.json())
         .then (data => {
             var listaForos= data[0];

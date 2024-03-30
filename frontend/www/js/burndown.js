@@ -5,7 +5,7 @@ var usuarioIDEnElSistema = parametros.get("idProyecto").split(',');
 document.addEventListener('DOMContentLoaded', function() {
     var titulo = document.getElementById('Titulo');
     titulo.textContent='Snupie - Burndown Chart - '+usuarioIDEnElSistema[1];
-    fetch('http://localhost:3000/api/burndown/'+usuarioIDEnElSistema[0]) //Cambiar el id 
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/burndown/'+usuarioIDEnElSistema[0]) //Cambiar el id 
         .then(response => response.json())
         .then (data => {
             const labels = Object.keys(data[0][0]);

@@ -15,7 +15,7 @@ function registrarUsuario(){
         contrasena:password
     }
 
-    fetch('http://localhost:3000/api/register', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -3,7 +3,7 @@ var usuarioIDEnElSistema = parametros.get("usuario");
 var correos = [];
 
 function cargarUsuariosDelProyecto(idProyecto) {
-    fetch('http://localhost:3000/api/projectWorkers/'+idProyecto)
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projectWorkers/'+idProyecto)
         .then(response => response.json())
         .then (data => {
             var jsonData = data[0];
@@ -24,7 +24,7 @@ function cargarUsuariosDelProyecto(idProyecto) {
 }
 
 function cargarTareas(idProyecto){
-    fetch('http://localhost:3000/api/getProjectTasks/'+idProyecto)
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/getProjectTasks/'+idProyecto)
         .then(response => response.json())
         .then (data => {
             var datosTareas = data[0];
@@ -118,7 +118,7 @@ function AgregarTarea(){
     }
 
     console.log(JSON.stringify(datos));
-    fetch('http://localhost:3000/api/createTask', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/createTask', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -140,7 +140,7 @@ function AgregarTarea(){
             + nombreTarea +
             "\nDescripcion:" + descripcion
         }
-    fetch('http://localhost:3000/api/sendEmail', {
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/sendEmail', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -159,7 +159,7 @@ function AgregarTarea(){
 
 function finalizarTarea(idProyecto,idTarea){
     idTarea = idTarea.split(',')
-    fetch(`http://localhost:3000/api/endTask/${idTarea[0]}`, {
+    fetch(`https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/endTask/${idTarea[0]}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -175,7 +175,7 @@ function finalizarTarea(idProyecto,idTarea){
             "mensaje": "Se ha finalizado la tarea:\n" 
             + idTarea[1]
             }
-            fetch('http://localhost:3000/api/sendEmail', {
+            fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/sendEmail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -203,7 +203,7 @@ function finalizarTarea(idProyecto,idTarea){
 }
 
 function eliminarTarea(idProyecto,idTarea){
-    fetch(`http://localhost:3000/api/deleteTask/${idTarea}`, {
+    fetch(`https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/deleteTask/${idTarea}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -227,7 +227,7 @@ function eliminarTarea(idProyecto,idTarea){
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://localhost:3000/api/projects')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projects')
         .then(response => response.json())
         .then (data => {
             var jsonData= data[0];
