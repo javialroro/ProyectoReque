@@ -33,6 +33,7 @@ function crearProyecto() {
     })
     .then(response => response.json())
     .then(data => {
+        alert("Se ha creado el proyecto correctamente");
         var idProyecto = data['@respuesta'];
 
         ColabsAProyecto.forEach(function(idColab, index) {

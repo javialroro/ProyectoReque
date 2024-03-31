@@ -59,6 +59,7 @@ function crearReunion() {
     .then(response => response.json())
     .then(data => {
         var idMeeting = data['@respuesta'];
+        alert("Se ha creado la reunion correctamente")
 
         ColabsAReunion.forEach(function(idColab, index) {
             var datos = {

@@ -28,7 +28,8 @@ function modificarInfo(){
     })
     .then(response => response.json())
     .then(data => {
-        //location.reload();
+        alert("El colaborador ha sido modificado correctamente");
+        location.reload();
         console.log(data);// Aquí puedes hacer algo con la respuesta del servidor si es necesario
     })
     .catch(error => {

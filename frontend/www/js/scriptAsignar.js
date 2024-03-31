@@ -45,6 +45,7 @@ function asignarColaborador() {
     })
     .then(response => response.json())
     .then(data => {
+        alert("El colaborador ha sido asignado correctamente");
         location.reload();
         console.log(data);// Aquí puedes hacer algo con la respuesta del servidor si es necesario
     })

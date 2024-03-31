@@ -23,7 +23,7 @@ body {
     margin-left: 20%;/* Toma en cuenta el ancho del menú más un espacio adicional */
     padding: 20px;
     height: 100%;
-    top: 20px
+    top: 20px;
 }
 
 .menu > * {
@@ -53,7 +53,6 @@ h1 {
     color: #FFFFFF;
     border: none;
     border-radius: 20px;
-    margin-top: 20px;
     cursor: pointer;
 }
 
