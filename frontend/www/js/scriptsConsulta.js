@@ -38,7 +38,6 @@ function cargarProyectos(ArrayProyectos) {
 
 function cargarTareas(proyecto) {
     proyecto = proyecto.split(",");
-
     fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/projectTasks/'+proyecto[0])
         .then(response => response.json())
         .then (data => {
