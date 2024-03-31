@@ -42,7 +42,7 @@ function enviarAAsignarColab() {
 }
 
 function enviarAModColab() {  
-    window.location.href= './ModificarColab.html?usuario='+ encodeURIComponent(usuarioIDEnElSistema);
+    window.location.href= './modificarColab.html?usuario='+ encodeURIComponent(usuarioIDEnElSistema);
 }
 
 function enviarACrearProyecto() {
