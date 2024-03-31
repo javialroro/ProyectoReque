@@ -7,17 +7,19 @@ function modificarInfo(){
     var departamento = document.getElementById('campoDepartamento').value;
     var numeroTelefono = document.getElementById('campoTelefono').value;
     var selectEstado = document.getElementById('selectEstado').value;
+    var selectRol = document.getElementById('selectRol').value;
 
     var datos = {
         "correoElectronico": email,
         "departamento" : departamento,
         "numeroTelefono": numeroTelefono,
-        "estado": parseInt(selectEstado)
+        "estado": parseInt(selectEstado),
+        "rol":parseInt(selectRol) //Cambiar en el appService y Stored Procedure
     }
 
     console.log(JSON.stringify(datos));
 
-    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/updateUser/' + usuarioID, {
+    fetch('http://localhost:3000/api/updateUser/' + usuarioID, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -47,7 +49,7 @@ function cargarUsuarios(ArrayUsuarios) {
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/users')
+    fetch('http://localhost:3000/api/users')
         .then(response => response.json())
         .then(data => {
             var jsonData=data;

@@ -106,11 +106,12 @@ CREATE PROCEDURE modificarColaborador(
     IN p_correoElectronico NVARCHAR(255),
     IN p_departamento NVARCHAR(255),
     IN p_telefono NVARCHAR(255),
-    IN p_estado INT
+    IN p_estado INT,
+    IN p_rol INT
 )
 BEGIN
     update Usuario
-    set Usuario.correoElectronico = p_correoElectronico, Usuario.departamento = p_departamento, Usuario.numeroTelefono = p_telefono, Usuario.IdEstado = p_estado
+    set Usuario.correoElectronico = p_correoElectronico, Usuario.departamento = p_departamento, Usuario.numeroTelefono = p_telefono, Usuario.IdEstado = p_estado, Usuario.idRol = p_rol
     where Usuario.idUsuario = p_idUsuario;
 END //
 

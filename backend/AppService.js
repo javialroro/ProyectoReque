@@ -70,9 +70,9 @@ class AppService {
 
     async updateUser(user,idUsuario) {
         try {
-            const query = 'CALL modificarColaborador(?, ?, ?, ?, ?)';
+            const query = 'CALL modificarColaborador(?, ?, ?, ?, ?, ?)';
             const values = [idUsuario,user.correoElectronico,user.departamento,
-            user.numeroTelefono,user.estado]
+            user.numeroTelefono,user.estado, user.rol]
             const newUser = await this.database.query(query, values);
             return newUser;
         } catch (error) {
