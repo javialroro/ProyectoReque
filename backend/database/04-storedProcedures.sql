@@ -309,11 +309,12 @@ BEGIN
         INNER JOIN Usuario ON Usuario.idUsuario = Foro.IdUsuario;
         
     -- Si el usuario es colaborador, muestra los foros del proyecto en el que está trabajando
-    ELSEIF userRoleID = 2 THEN
-        SELECT f.idForo, f.idProyecto, f.tema, u.nombre AS NombreUsuario, f.descripcion
-        FROM Foro f
-        INNER JOIN Usuario u ON f.idProyecto = u.idProyecto
-        WHERE u.idUsuario = userID;
+		ELSEIF userRoleID = 2 THEN
+		SELECT f.idForo, f.idProyecto, f.tema, u.nombre AS NombreUsuario, f.descripcion
+		FROM Foro f
+		LEFT JOIN Usuario u ON f.idProyecto = u.idProyecto
+		WHERE u.idUsuario = userID OR f.idProyecto IS NULL;
+
 
     -- Si el usuario no es ni administrador ni colaborador, no muestra nada
     ELSE
@@ -321,7 +322,10 @@ BEGIN
     END IF;
 END //
 
+
+
 DELIMITER ;
+
 
 
 -- Obtener todos los usuarios que son administradores
