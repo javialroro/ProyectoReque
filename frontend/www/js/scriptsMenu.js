@@ -70,7 +70,7 @@ function enviarAForos() {
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    fetch('http://localhost:3000/api/users')
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/users')
             .then(response => response.json())
             .then(data => {
                 var jsonData=data;
