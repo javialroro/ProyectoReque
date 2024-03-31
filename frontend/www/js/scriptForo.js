@@ -107,7 +107,7 @@ function CrearComentario(){
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/forumComments/user/1') //Cambiar para el usuario que esta usando el sistema
+    fetch('https://api-snupie-2a6ax3i7sq-uc.a.run.app/api/forumComments/user/'+usuarioIDEnElSistema) //Cambiar para el usuario que esta usando el sistema
         .then(response => response.json())
         .then (data => {
             var listaForos= data[0];
