@@ -285,6 +285,27 @@ class AppService {
             console.error('Failed to create project:', error);
         }
     }
+
+
+    async getAllTasks()  {
+        try {
+            const query = 'CALL ObtenerTareasConUsuarios';
+            return await this.database.query(query);
+        } catch (error) {
+            console.error('Failed to get all tasks:', error);
+        }
+    }
+
+
+    async getInformes(id){
+        try {
+            const query = 'CALL ObtenerPromediosProyecto(?)';
+            const values = [id]
+            return await this.database.query(query, values);
+        } catch (error) {
+            console.error('Failed to get informe recursos:', error);
+        }
+    }
 }
 
 module.exports.AppService = AppService;

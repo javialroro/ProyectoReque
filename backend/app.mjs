@@ -153,6 +153,18 @@ app.post('/api/inviteMeeting', async (req, res) => {
     res.json(usuario);
 });
 
+app.get('/api/getInformes/:id', async (req, res) => {
+    const informe = await appService.getInformes(req.params.id);
+    res.json(informe);
+});
+
+app.get('/api/getAllTasks', async (req, res) => {
+    const tasks = await appService.getAllTasks();
+    res.json(tasks);
+});
+
+
+
 const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
