@@ -153,7 +153,7 @@ app.post('/api/inviteMeeting', async (req, res) => {
     res.json(usuario);
 });
 
-const PORT = 5000;
+const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });

@@ -95,8 +95,9 @@ class AppService {
 
     async createTask(task) {
         try {
-            const query = 'CALL crearTarea(?,?,?,?,?)';
-            const values = [task.idProyecto,task.nombre,task.descripcion,task.usuario,task.storyPoints]
+            const query = 'CALL crearTarea(?,?,?,?,?,?,?)';
+            const values = [task.idProyecto,task.nombre,task.descripcion,task.usuario,task.storyPoints, task.RecursosEconomicos,
+                task.TiempoDesarrollo]
             const newTask = await this.database.query(query, values);
             return newTask;
 

@@ -1,6 +1,6 @@
-GOOGLE_PROJECT_ID=steady-orb-415321
+GOOGLE_PROJECT_ID=automated-lore-423717-g6
 CLOUD_RUN_SERVICE=api-snupie
-INSTANCE_CONNECTION_NAME=steady-orb-415321:us-central1:snupie
+INSTANCE_CONNECTION_NAME=automated-lore-423717-g6:us-central1:snupie
 DB_USER=root
 DB_PASSWORD=1234
 DB_NAME=snupie_bd
